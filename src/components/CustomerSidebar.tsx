@@ -10,14 +10,21 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarSeparator,
+  SidebarRail,
   SidebarTrigger
 } from "./ui/sidebar";
 import {
   User,
   Caravan,
   List,
+  Clock,
+  Map,
+  CreditCard,
+  MessageSquare,
   Settings,
-  LogOut
+  LogOut,
+  TicketIcon,
+  Home
 } from "lucide-react";
 import { useAuth } from "../context/AuthContext";
 import { Button } from "./ui/button";
@@ -47,6 +54,17 @@ const CustomerSidebar = () => {
         
         <SidebarMenu>
           <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/")}>
+              <Link to="/">
+                <Home />
+                <span>Página Inicial</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarSeparator />
+          
+          <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/my-account")}>
               <Link to="/my-account">
                 <User />
@@ -57,18 +75,58 @@ const CustomerSidebar = () => {
           
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/my-account/passagens")}>
-              <Link to="/my-account">
+              <Link to="/my-account/passagens">
                 <List />
                 <span>Minhas Passagens</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           
+          <SidebarSeparator />
+          
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/routes")}>
               <Link to="/routes">
-                <Caravan />
-                <span>Procurar Rotas</span>
+                <Map />
+                <span>Ver Rotas</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/buy-ticket")}>
+              <Link to="/routes">
+                <TicketIcon />
+                <span>Comprar Passagem</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/schedule")}>
+              <Link to="/routes">
+                <Clock />
+                <span>Horários</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarSeparator />
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/payments")}>
+              <Link to="/my-account">
+                <CreditCard />
+                <span>Meus Pagamentos</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/messages")}>
+              <Link to="/my-account">
+                <MessageSquare />
+                <span>Mensagens</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -96,6 +154,9 @@ const CustomerSidebar = () => {
           <span>Sair</span>
         </Button>
       </SidebarFooter>
+      
+      {/* Add the sidebar rail to allow reopening the menu when collapsed */}
+      <SidebarRail />
     </Sidebar>
   );
 };

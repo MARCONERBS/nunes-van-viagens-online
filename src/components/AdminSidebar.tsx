@@ -10,6 +10,7 @@ import {
   SidebarMenuItem,
   SidebarMenuButton,
   SidebarSeparator,
+  SidebarRail,
   SidebarTrigger
 } from "./ui/sidebar";
 import {
@@ -162,6 +163,9 @@ const AdminSidebar = () => {
           <span>Sair</span>
         </Button>
       </SidebarFooter>
+      
+      {/* Add the sidebar rail to allow reopening the menu when collapsed */}
+      <SidebarRail />
     </Sidebar>
   );
 };
