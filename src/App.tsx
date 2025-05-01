@@ -7,6 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import { AuthProvider } from "./context/AuthContext";
 import { TicketProvider } from "./context/TicketContext";
+import { SidebarProvider } from "./components/ui/sidebar";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 
@@ -28,24 +29,26 @@ const App = () => (
         <TicketProvider>
           <Toaster />
           <Sonner />
-          <BrowserRouter>
-            <div className="flex flex-col min-h-screen">
-              <Navbar />
-              <main className="flex-grow">
-                <Routes>
-                  <Route path="/" element={<HomePage />} />
-                  <Route path="/routes" element={<RoutesPage />} />
-                  <Route path="/route/:id" element={<RouteDetailPage />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                  <Route path="/my-account" element={<MyAccountPage />} />
-                  <Route path="/admin" element={<AdminPage />} />
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </main>
-              <Footer />
-            </div>
-          </BrowserRouter>
+          <SidebarProvider>
+            <BrowserRouter>
+              <div className="flex flex-col min-h-screen w-full">
+                <Navbar />
+                <main className="flex-grow">
+                  <Routes>
+                    <Route path="/" element={<HomePage />} />
+                    <Route path="/routes" element={<RoutesPage />} />
+                    <Route path="/route/:id" element={<RouteDetailPage />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/register" element={<RegisterPage />} />
+                    <Route path="/my-account" element={<MyAccountPage />} />
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="*" element={<NotFound />} />
+                  </Routes>
+                </main>
+                <Footer />
+              </div>
+            </BrowserRouter>
+          </SidebarProvider>
         </TicketProvider>
       </AuthProvider>
     </TooltipProvider>

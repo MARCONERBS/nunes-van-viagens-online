@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useAuth } from "../context/AuthContext";
-import { Bus, Menu, User, X } from "lucide-react";
+import { Caravan, Menu, User, X } from "lucide-react";
 
 const Navbar: React.FC = () => {
   const { user, logout, isAuthenticated } = useAuth();
@@ -20,7 +20,7 @@ const Navbar: React.FC = () => {
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Bus size={28} className="text-nunes-accent" />
+            <Caravan size={28} className="text-nunes-accent" />
             <span className="text-xl font-bold logo">Nunes Van</span>
           </Link>
 

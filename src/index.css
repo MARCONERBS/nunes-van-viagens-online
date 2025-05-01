@@ -34,6 +34,17 @@
     --ring: 221 83% 53%;
 
     --radius: 0.5rem;
+    
+    --nunes-primary: 220 50% 25%;
+    --nunes-secondary: 215 45% 35%;
+    --nunes-accent: 35 100% 60%;
+    
+    --sidebar: 0 0% 100%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 221 83% 53%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
   }
 
   .dark {
@@ -64,6 +75,17 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
+    
+    --nunes-primary: 220 35% 20%;
+    --nunes-secondary: 215 30% 25%;
+    --nunes-accent: 35 90% 55%;
+    
+    --sidebar: 220 35% 20%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-border: 217.2 32.6% 30.5%;
+    --sidebar-ring: 224.3 76.3% 58%;
+    --sidebar-accent: 217.2 32.6% 25%;
+    --sidebar-accent-foreground: 210 40% 98%;
   }
 }
 
@@ -80,4 +102,57 @@
 .logo {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
+}
+
+/* Van-specific styles */
+.bg-nunes-primary {
+  @apply bg-[hsl(var(--nunes-primary))];
+}
+
+.bg-nunes-secondary {
+  @apply bg-[hsl(var(--nunes-secondary))];
+}
+
+.bg-nunes-accent {
+  @apply bg-[hsl(var(--nunes-accent))];
+}
+
+.text-nunes-primary {
+  @apply text-[hsl(var(--nunes-primary))];
+}
+
+.text-nunes-secondary {
+  @apply text-[hsl(var(--nunes-secondary))];
+}
+
+.text-nunes-accent {
+  @apply text-[hsl(var(--nunes-accent))];
+}
+
+.hover\:bg-nunes-primary:hover {
+  @apply bg-[hsl(var(--nunes-primary))];
+}
+
+.hover\:bg-nunes-secondary:hover {
+  @apply bg-[hsl(var(--nunes-secondary))];
+}
+
+.hover\:bg-nunes-accent:hover {
+  @apply bg-[hsl(var(--nunes-accent))];
+}
+
+.hover\:bg-nunes-primary\/90:hover {
+  @apply bg-[hsl(var(--nunes-primary)_/_0.9)];
+}
+
+.hover\:bg-nunes-secondary\/90:hover {
+  @apply bg-[hsl(var(--nunes-secondary)_/_0.9)];
+}
+
+.hover\:bg-nunes-accent\/90:hover {
+  @apply bg-[hsl(var(--nunes-accent)_/_0.9)];
+}
+
+.hover\:text-nunes-accent:hover {
+  @apply text-[hsl(var(--nunes-accent))];
 }
