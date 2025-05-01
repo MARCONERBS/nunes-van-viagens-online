@@ -17,6 +17,11 @@ import {
   Caravan,
   List,
   User,
+  Clock,
+  Map,
+  CreditCard,
+  PieChart,
+  MessageSquare,
   Settings,
   LogOut
 } from "lucide-react";
@@ -25,7 +30,7 @@ import { Button } from "./ui/button";
 
 const AdminSidebar = () => {
   const location = useLocation();
-  const { logout } = useAuth();
+  const { logout, user } = useAuth();
   
   const isActive = (path: string) => {
     return location.pathname === path;
@@ -41,6 +46,11 @@ const AdminSidebar = () => {
       </SidebarHeader>
       
       <SidebarContent>
+        <div className="p-4">
+          <div className="text-sm text-white/70">Administrador</div>
+          <div className="font-medium">{user?.name || 'Admin'}</div>
+        </div>
+        
         <SidebarMenu>
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/admin")}>
@@ -51,20 +61,51 @@ const AdminSidebar = () => {
             </SidebarMenuButton>
           </SidebarMenuItem>
           
+          <SidebarSeparator />
+          
           <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/admin/rotas")}>
               <Link to="/admin">
                 <Caravan />
-                <span>Rotas</span>
+                <span>Gerenciar Vans</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
           
           <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/admin/rotas")}>
+              <Link to="/admin">
+                <Map />
+                <span>Gerenciar Rotas</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/admin/horarios")}>
+              <Link to="/admin">
+                <Clock />
+                <span>Horários</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarSeparator />
+          
+          <SidebarMenuItem>
             <SidebarMenuButton asChild isActive={isActive("/admin/passagens")}>
               <Link to="/admin">
                 <List />
-                <span>Passagens</span>
+                <span>Reservas</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/admin/pagamentos")}>
+              <Link to="/admin">
+                <CreditCard />
+                <span>Pagamentos</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
@@ -74,6 +115,26 @@ const AdminSidebar = () => {
               <Link to="/admin">
                 <User />
                 <span>Clientes</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarSeparator />
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/admin/relatorios")}>
+              <Link to="/admin">
+                <PieChart />
+                <span>Relatórios</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/admin/mensagens")}>
+              <Link to="/admin">
+                <MessageSquare />
+                <span>Mensagens</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
