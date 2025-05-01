@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -46,7 +45,7 @@ const CustomerSidebar = () => {
         <SidebarTrigger />
       </SidebarHeader>
       
-      <SidebarContent>
+      <SidebarContent className="overflow-y-auto">
         <div className="p-4">
           <div className="text-sm text-white/70">Bem-vindo,</div>
           <div className="font-medium">{user?.name}</div>
@@ -144,7 +143,7 @@ const CustomerSidebar = () => {
         </SidebarMenu>
       </SidebarContent>
       
-      <SidebarFooter className="p-4">
+      <SidebarFooter className="p-4 mt-auto sticky bottom-0">
         <Button 
           variant="outline" 
           onClick={logout}
@@ -155,7 +154,6 @@ const CustomerSidebar = () => {
         </Button>
       </SidebarFooter>
       
-      {/* Add the sidebar rail to allow reopening the menu when collapsed */}
       <SidebarRail />
     </Sidebar>
   );

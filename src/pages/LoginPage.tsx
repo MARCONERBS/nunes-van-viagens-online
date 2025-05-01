@@ -16,9 +16,6 @@ const LoginPage: React.FC = () => {
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
 
-  // Get redirect location from state if available
-  const redirectTo = location.state?.redirectTo || "/";
-
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     
@@ -37,7 +34,12 @@ const LoginPage: React.FC = () => {
       const success = await login(email, password);
       
       if (success) {
-        navigate(redirectTo);
+        // Redirect based on user role
+        if (email === 'admin@nunesvan.com') {
+          navigate('/admin');
+        } else {
+          navigate('/my-account');
+        }
       }
     } catch (error) {
       toast({
