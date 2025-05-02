@@ -1,7 +1,7 @@
 
 import * as React from "react"
-import { PanelLeft } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { PanelLeft, PanelRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent } from "@/components/ui/sheet"
 import { SIDEBAR_WIDTH, SIDEBAR_WIDTH_MOBILE, SIDEBAR_WIDTH_ICON, useSidebar } from "./sidebar-provider"
@@ -139,7 +139,7 @@ export const SidebarRail = React.forwardRef<
   HTMLButtonElement,
   React.ComponentProps<"button">
 >(({ className, ...props }, ref) => {
-  const { toggleSidebar } = useSidebar()
+  const { toggleSidebar, state } = useSidebar()
 
   return (
     <button
@@ -159,7 +159,18 @@ export const SidebarRail = React.forwardRef<
         className
       )}
       {...props}
-    />
+    >
+      {/* Add toggle button for collapsed state */}
+      {state === "collapsed" && (
+        <div className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 bg-sidebar rounded-full p-1 shadow-md hover:bg-sidebar-accent">
+          {side === "left" ? (
+            <PanelRight size={16} className="text-sidebar-foreground" />
+          ) : (
+            <PanelLeft size={16} className="text-sidebar-foreground" />
+          )}
+        </div>
+      )}
+    </button>
   )
 })
 SidebarRail.displayName = "SidebarRail"
