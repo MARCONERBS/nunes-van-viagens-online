@@ -1,9 +1,8 @@
-
 import React from "react";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 import SearchRouteForm from "../components/SearchRouteForm";
-import { Calendar, Clock, MapPin, Shield, Star, Caravan } from "lucide-react";
+import { Calendar, Clock, MapPin, Shield, Star, Caravan, Bus } from "lucide-react";
 
 const HomePage: React.FC = () => {
   return (
@@ -54,6 +53,75 @@ const HomePage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-center -mt-16">
             <SearchRouteForm />
+          </div>
+        </div>
+      </section>
+
+      {/* Itinerários Principais Section */}
+      <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+            Itinerários Principais
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Belém x São Caetano */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+              <div className="flex items-center gap-2 mb-4">
+                <Bus className="text-nunes-primary" />
+                <h3 className="text-xl font-semibold">Belém → São Caetano</h3>
+              </div>
+              <div className="space-y-2 mb-4">
+                <p className="font-medium text-gray-700">Horários de partida:</p>
+                <div className="flex flex-wrap gap-2">
+                  {['07:00', '08:00', '10:00', '14:00', '16:30', '18:00'].map((hour) => (
+                    <span key={hour} className="bg-nunes-light text-nunes-primary px-3 py-1 rounded-full text-sm">
+                      {hour}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-4">
+                <Button 
+                  asChild
+                  size="sm"
+                  className="bg-nunes-secondary hover:bg-nunes-secondary/90"
+                >
+                  <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver detalhes</Link>
+                </Button>
+              </div>
+            </div>
+            
+            {/* São Caetano x Belém */}
+            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+              <div className="flex items-center gap-2 mb-4">
+                <Bus className="text-nunes-primary" />
+                <h3 className="text-xl font-semibold">São Caetano → Belém</h3>
+              </div>
+              <div className="space-y-2 mb-4">
+                <p className="font-medium text-gray-700">Horários de partida:</p>
+                <div className="flex flex-wrap gap-2">
+                  {['04:00', '05:00', '10:20', '11:20', '13:20', '17:00'].map((hour) => (
+                    <span key={hour} className="bg-nunes-light text-nunes-primary px-3 py-1 rounded-full text-sm">
+                      {hour}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="mt-4">
+                <Button 
+                  asChild
+                  size="sm"
+                  className="bg-nunes-secondary hover:bg-nunes-secondary/90"
+                >
+                  <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver detalhes</Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8 text-gray-500">
+            <p>Viagens disponíveis todos os dias da semana</p>
           </div>
         </div>
       </section>
@@ -117,55 +185,58 @@ const HomePage: React.FC = () => {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Updated first popular route */}
             <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
                 src="https://images.unsplash.com/photo-1564510182789-972d396e8fdb?q=80&w=1932&auto=format&fit=crop" 
-                alt="São Paulo para Rio de Janeiro" 
+                alt="Belém para São Caetano" 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">São Paulo → Rio de Janeiro</h3>
+                <h3 className="text-xl font-semibold mb-2">Belém → São Caetano</h3>
                 <p className="text-gray-600 mb-4">Viagem executiva em van com WiFi e tomadas USB</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-nunes-primary font-bold">A partir de R$ 120,00</span>
+                  <span className="text-nunes-primary font-bold">A partir de R$ 25,00</span>
                   <Button asChild size="sm" className="bg-nunes-secondary hover:bg-nunes-secondary/90">
-                    <Link to="/routes?origin=São%20Paulo&destination=Rio%20de%20Janeiro">Ver horários</Link>
+                    <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver horários</Link>
                   </Button>
                 </div>
               </div>
             </div>
 
+            {/* Updated second popular route */}
             <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
                 src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?q=80&w=1935&auto=format&fit=crop" 
-                alt="São Paulo para Belo Horizonte" 
+                alt="São Caetano para Belém" 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">São Paulo → Belo Horizonte</h3>
+                <h3 className="text-xl font-semibold mb-2">São Caetano → Belém</h3>
                 <p className="text-gray-600 mb-4">Van executiva com paradas em pontos estratégicos</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-nunes-primary font-bold">A partir de R$ 100,00</span>
+                  <span className="text-nunes-primary font-bold">A partir de R$ 25,00</span>
                   <Button asChild size="sm" className="bg-nunes-secondary hover:bg-nunes-secondary/90">
-                    <Link to="/routes?origin=São%20Paulo&destination=Belo%20Horizonte">Ver horários</Link>
+                    <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver horários</Link>
                   </Button>
                 </div>
               </div>
             </div>
 
+            {/* Keep the third route */}
             <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1593702288056-7e302356173f?q=80&w=2070&auto=format&fit=crop" 
-                alt="Belo Horizonte para São Paulo" 
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" 
+                alt="Outras Rotas" 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Belo Horizonte → São Paulo</h3>
-                <p className="text-gray-600 mb-4">Vans confortáveis saindo a cada 3 horas</p>
+                <h3 className="text-xl font-semibold mb-2">Outras Rotas</h3>
+                <p className="text-gray-600 mb-4">Conheça todas as nossas opções de destinos</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-nunes-primary font-bold">A partir de R$ 100,00</span>
+                  <span className="text-nunes-primary font-bold">Diversos valores</span>
                   <Button asChild size="sm" className="bg-nunes-secondary hover:bg-nunes-secondary/90">
-                    <Link to="/routes?origin=Belo%20Horizonte&destination=São%20Paulo">Ver horários</Link>
+                    <Link to="/routes">Ver todas</Link>
                   </Button>
                 </div>
               </div>
