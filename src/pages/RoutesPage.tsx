@@ -63,9 +63,12 @@ const RoutesPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold">
-              {filteredRoutes.length > 0 
-                ? `${filteredRoutes.length} ${filteredRoutes.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}`
-                : 'Nenhum resultado encontrado'}
+              {/* Modificado para não mostrar "nenhum resultado" quando é uma rota principal */}
+              {isMainRoute 
+                ? "Horários Disponíveis" 
+                : filteredRoutes.length > 0 
+                  ? `${filteredRoutes.length} ${filteredRoutes.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}`
+                  : 'Nenhum resultado encontrado'}
             </h2>
             
             {origin && destination && (
@@ -81,8 +84,6 @@ const RoutesPage: React.FC = () => {
           {/* Itinerários Principais Belém x São Caetano */}
           {isMainRoute && (
             <div className="mb-8 bg-nunes-light p-6 rounded-lg">
-              <h3 className="text-lg font-semibold mb-4">Horários Disponíveis</h3>
-              
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {origin === "Belém" && destination === "São Caetano" && (
                   <div>
@@ -117,19 +118,24 @@ const RoutesPage: React.FC = () => {
             </div>
           )}
 
-          {filteredRoutes.length > 0 ? (
-            <div className="grid gap-6">
-              {filteredRoutes.map((route) => (
-                <RouteCard key={route.id} route={route} />
-              ))}
-            </div>
-          ) : (
+          {/* Modificado para não mostrar a mensagem de nenhum resultado quando é uma rota principal */}
+          {!isMainRoute && filteredRoutes.length === 0 ? (
             <div className="bg-white p-8 rounded-lg shadow text-center">
               <h3 className="text-lg font-semibold mb-2">Nenhuma rota encontrada</h3>
               <p className="text-gray-600 mb-4">
                 Tente ajustar seus critérios de busca ou escolher datas diferentes.
               </p>
             </div>
+          ) : (
+            <>
+              {filteredRoutes.length > 0 && (
+                <div className="grid gap-6">
+                  {filteredRoutes.map((route) => (
+                    <RouteCard key={route.id} route={route} />
+                  ))}
+                </div>
+              )}
+            </>
           )}
         </div>
       </section>
