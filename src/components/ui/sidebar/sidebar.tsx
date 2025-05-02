@@ -1,4 +1,3 @@
-
 import * as React from "react"
 import { cn } from "@/lib/utils"
 import { PanelLeft, PanelRight } from "lucide-react"
@@ -140,6 +139,20 @@ export const SidebarRail = React.forwardRef<
   React.ComponentProps<"button">
 >(({ className, ...props }, ref) => {
   const { toggleSidebar, state } = useSidebar()
+  
+  // Get the side from the parent element's data-side attribute
+  const [side, setSide] = React.useState<"left" | "right">("left")
+  
+  // Use ref to get the parent element and check its data-side attribute
+  React.useEffect(() => {
+    const parentElement = ref?.current?.closest("[data-side]")
+    if (parentElement) {
+      const sideProp = parentElement.getAttribute("data-side") as "left" | "right"
+      if (sideProp) {
+        setSide(sideProp)
+      }
+    }
+  }, [ref])
 
   return (
     <button
