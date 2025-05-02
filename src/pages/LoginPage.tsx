@@ -11,10 +11,21 @@ import { toast } from "../components/ui/use-toast";
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { login } = useAuth();
+  const { login, user } = useAuth();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+
+  // Redirect if already logged in
+  React.useEffect(() => {
+    if (user) {
+      if (user.role === "admin") {
+        navigate("/admin");
+      } else {
+        navigate("/my-account");
+      }
+    }
+  }, [user, navigate]);
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,12 +45,8 @@ const LoginPage: React.FC = () => {
       const success = await login(email, password);
       
       if (success) {
-        // Redirect based on user role
-        if (email === 'admin@nunesvan.com') {
-          navigate('/admin');
-        } else {
-          navigate('/my-account');
-        }
+        // Redirect is now handled by the useEffect above
+        // This ensures we have the user data before redirecting
       }
     } catch (error) {
       toast({
