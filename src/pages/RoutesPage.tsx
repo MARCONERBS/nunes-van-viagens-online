@@ -19,7 +19,11 @@ const RoutesPage: React.FC = () => {
   
   // Check if it's one of our main routes
   const isMainRoute = (origin === "Belém" && destination === "São Caetano") || 
-                      (origin === "São Caetano" && destination === "Belém");
+                      (origin === "São Caetano" && destination === "Belém") ||
+                      (origin === "São Paulo" && destination === "Rio de Janeiro") ||
+                      (origin === "Rio de Janeiro" && destination === "São Paulo") ||
+                      (origin === "São Paulo" && destination === "Belo Horizonte") ||
+                      (origin === "Belo Horizonte" && destination === "São Paulo");
 
   useEffect(() => {
     let filtered = [...routes];
@@ -56,7 +60,7 @@ const RoutesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Search Form */}
-      <section className="bg-nunes-primary py-10">
+      <section className="bg-nunes-primary py-8">
         <div className="container mx-auto px-4">
           <h1 className="text-white text-2xl md:text-3xl font-bold mb-6 text-center">
             Encontre sua passagem
@@ -68,41 +72,35 @@ const RoutesPage: React.FC = () => {
       </section>
 
       {/* Results */}
-      <section className="py-10">
+      <section className="py-8">
         <div className="container mx-auto px-4">
-          <div className="bg-white rounded-lg shadow mb-6">
-            <div className="p-6 border-b">
-              <div className="flex justify-between items-center">
-                <h2 className="text-xl font-semibold">
-                  Horários Disponíveis
-                </h2>
-                {origin && destination && (
-                  <div className="text-gray-600">
-                    Busca: {origin} → {destination} 
-                    {dateParam && isValid(new Date(dateParam)) && (
-                      <span className="ml-1">| {getFormattedDateString()}</span>
-                    )}
-                  </div>
-                )}
-              </div>
+          <div className="bg-white rounded-lg shadow">
+            <div className="p-4 border-b">
+              <h2 className="text-xl font-semibold">
+                Horários Disponíveis
+              </h2>
+              {origin && destination && (
+                <div className="text-gray-600 mt-1">
+                  Busca: {origin} para {destination} 
+                  {dateParam && isValid(new Date(dateParam)) && (
+                    <span className="ml-1">| {getFormattedDateString()}</span>
+                  )}
+                </div>
+              )}
             </div>
 
             {/* Show filtered routes if available */}
             {filteredRoutes.length > 0 ? (
-              <div className="p-0">
-                <div className="divide-y">
-                  {filteredRoutes.map((route) => (
-                    <div key={route.id} className="p-0">
-                      <RouteCard route={route} />
-                    </div>
-                  ))}
-                </div>
+              <div className="divide-y">
+                {filteredRoutes.map((route) => (
+                  <RouteCard key={route.id} route={route} />
+                ))}
               </div>
             ) : (
               <div className="p-6">
                 <h3 className="text-lg font-semibold mb-4">Horários de partida disponíveis</h3>
                 
-                {/* For main routes (Belém x São Caetano), show schedule info */}
+                {/* For main routes, show schedule info */}
                 {isMainRoute && (
                   <div>
                     {origin === "Belém" && destination === "São Caetano" && (
@@ -127,6 +125,74 @@ const RoutesPage: React.FC = () => {
                         <h4 className="font-medium mb-3">São Caetano → Belém (todos os dias)</h4>
                         <div className="flex flex-wrap gap-3 mb-3">
                           {['04:00', '05:00', '10:20', '11:20', '13:20', '17:00'].map((time) => (
+                            <div key={time} className="bg-blue-50 text-blue-700 px-5 py-2 rounded-full border border-blue-200 flex items-center">
+                              <Clock size={16} className="mr-2" />
+                              {time}
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-500 mt-3">
+                          Escolha uma data para ver a disponibilidade específica.
+                        </p>
+                      </div>
+                    )}
+
+                    {origin === "São Paulo" && destination === "Rio de Janeiro" && (
+                      <div className="mb-6">
+                        <h4 className="font-medium mb-3">São Paulo → Rio de Janeiro (todos os dias)</h4>
+                        <div className="flex flex-wrap gap-3 mb-3">
+                          {['08:00'].map((time) => (
+                            <div key={time} className="bg-blue-50 text-blue-700 px-5 py-2 rounded-full border border-blue-200 flex items-center">
+                              <Clock size={16} className="mr-2" />
+                              {time}
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-500 mt-3">
+                          Escolha uma data para ver a disponibilidade específica.
+                        </p>
+                      </div>
+                    )}
+                    
+                    {origin === "Rio de Janeiro" && destination === "São Paulo" && (
+                      <div className="mb-6">
+                        <h4 className="font-medium mb-3">Rio de Janeiro → São Paulo (todos os dias)</h4>
+                        <div className="flex flex-wrap gap-3 mb-3">
+                          {['16:00'].map((time) => (
+                            <div key={time} className="bg-blue-50 text-blue-700 px-5 py-2 rounded-full border border-blue-200 flex items-center">
+                              <Clock size={16} className="mr-2" />
+                              {time}
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-500 mt-3">
+                          Escolha uma data para ver a disponibilidade específica.
+                        </p>
+                      </div>
+                    )}
+                    
+                    {origin === "São Paulo" && destination === "Belo Horizonte" && (
+                      <div className="mb-6">
+                        <h4 className="font-medium mb-3">São Paulo → Belo Horizonte (todos os dias)</h4>
+                        <div className="flex flex-wrap gap-3 mb-3">
+                          {['09:30'].map((time) => (
+                            <div key={time} className="bg-blue-50 text-blue-700 px-5 py-2 rounded-full border border-blue-200 flex items-center">
+                              <Clock size={16} className="mr-2" />
+                              {time}
+                            </div>
+                          ))}
+                        </div>
+                        <p className="text-sm text-gray-500 mt-3">
+                          Escolha uma data para ver a disponibilidade específica.
+                        </p>
+                      </div>
+                    )}
+                    
+                    {origin === "Belo Horizonte" && destination === "São Paulo" && (
+                      <div className="mb-6">
+                        <h4 className="font-medium mb-3">Belo Horizonte → São Paulo (todos os dias)</h4>
+                        <div className="flex flex-wrap gap-3 mb-3">
+                          {['10:00'].map((time) => (
                             <div key={time} className="bg-blue-50 text-blue-700 px-5 py-2 rounded-full border border-blue-200 flex items-center">
                               <Clock size={16} className="mr-2" />
                               {time}

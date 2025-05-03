@@ -1,12 +1,9 @@
 
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { Card } from "./ui/card";
 import { Button } from "./ui/button";
 import { Route } from "../types";
-import { ArrowRight, Calendar, Clock } from "lucide-react";
-import { format, parseISO } from "date-fns";
-import { ptBR } from "date-fns/locale";
+import { ArrowRight, Clock } from "lucide-react";
 
 interface RouteCardProps {
   route: Route;
@@ -15,69 +12,51 @@ interface RouteCardProps {
 const RouteCard: React.FC<RouteCardProps> = ({ route }) => {
   const navigate = useNavigate();
   
-  const formatDateTime = (dateTimeStr: string) => {
-    const date = parseISO(dateTimeStr);
-    return {
-      date: format(date, "dd/MM/yyyy", { locale: ptBR }),
-      time: format(date, "HH:mm", { locale: ptBR }),
-    };
+  // Formata o horário a partir da string de data
+  const getTime = (dateTimeStr: string) => {
+    const date = new Date(dateTimeStr);
+    return date.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
   };
 
-  const departure = formatDateTime(route.departureTime);
-  const arrival = formatDateTime(route.arrivalTime);
-
+  const departureTime = getTime(route.departureTime);
   const seatsTextColor = route.seatsAvailable < 5 ? 'text-red-500' : 'text-green-600';
-  const isMainRoute = (route.origin === "Belém" && route.destination === "São Caetano") || 
-                      (route.origin === "São Caetano" && route.destination === "Belém");
 
   return (
-    <div className="p-4 transition-all hover:bg-gray-50 border-b last:border-b-0">
-      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-        {/* Left side - Route information */}
-        <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
-          {/* Origin to Destination */}
-          <div className="flex items-center space-x-2">
-            <span className="text-lg font-semibold">{route.origin}</span>
-            <ArrowRight className="text-gray-400" size={18} />
-            <span className="text-lg font-semibold">{route.destination}</span>
-          </div>
-          
-          {/* Time */}
-          <div className="flex items-center text-gray-700">
-            <Clock size={16} className="mr-2 text-gray-500" />
-            <span>
-              {departure.time}
-            </span>
-          </div>
-          
-          {/* Available seats */}
-          <div className={`${seatsTextColor} font-medium text-sm hidden md:block`}>
-            {route.seatsAvailable} {route.seatsAvailable === 1 ? 'assento disponível' : 'assentos disponíveis'}
+    <div className="py-5 px-4 border-b last:border-b-0">
+      <div className="flex flex-row items-center justify-between">
+        {/* Origin/Destination */}
+        <div className="flex items-center gap-2 min-w-[250px]">
+          <span className="text-lg font-medium">{route.origin}</span>
+          <ArrowRight className="text-gray-400" size={16} />
+          <span className="text-lg font-medium">{route.destination}</span>
+        </div>
+        
+        {/* Time */}
+        <div className="flex items-center">
+          <Clock size={18} className="text-gray-500 mr-1" />
+          <span className="text-base">{departureTime}</span>
+        </div>
+        
+        {/* Available seats */}
+        <div className={`${seatsTextColor} font-medium flex-1 ml-4`}>
+          {route.seatsAvailable} {route.seatsAvailable === 1 ? 'assento disponível' : 'assentos disponíveis'}
+        </div>
+        
+        {/* Price */}
+        <div className="text-right mr-4">
+          <div className="text-sm text-gray-500">Preço</div>
+          <div className="text-xl font-bold text-blue-700">
+            R$ {route.price.toFixed(2).replace(".", ",")}
           </div>
         </div>
         
-        {/* Right side - Price and action */}
-        <div className="flex items-center gap-4 ml-auto">
-          <div className="text-right mr-2">
-            <div className="text-sm text-gray-500">Preço</div>
-            <div className="text-lg font-bold text-blue-700">
-              R$ {route.price.toFixed(2).replace(".", ",")}
-            </div>
-          </div>
-          
-          <Button 
-            onClick={() => navigate(`/route/${route.id}`)}
-            className="bg-blue-700 hover:bg-blue-800"
-            size="sm"
-          >
-            Selecionar
-          </Button>
-        </div>
-      </div>
-      
-      {/* Mobile-only seats display */}
-      <div className={`${seatsTextColor} font-medium text-sm md:hidden mt-2`}>
-        {route.seatsAvailable} {route.seatsAvailable === 1 ? 'assento disponível' : 'assentos disponíveis'}
+        {/* Button */}
+        <Button 
+          onClick={() => navigate(`/route/${route.id}`)}
+          className="bg-blue-700 hover:bg-blue-800"
+        >
+          Selecionar
+        </Button>
       </div>
     </div>
   );
