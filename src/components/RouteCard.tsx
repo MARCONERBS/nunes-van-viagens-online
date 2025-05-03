@@ -19,16 +19,16 @@ const RouteCard: React.FC<RouteCardProps> = ({ route }) => {
   };
 
   const departureTime = getTime(route.departureTime);
-  const seatsTextColor = route.seatsAvailable < 5 ? 'text-red-500' : 'text-green-600';
+  const seatsTextColor = route.seatsAvailable < 5 ? 'text-green-600' : 'text-green-600';
 
   return (
-    <div className="py-5 px-4 border-b last:border-b-0">
+    <div className="py-5 px-4 border-b last:border-b-0 hover:bg-gray-50">
       <div className="flex flex-row items-center justify-between">
         {/* Origin/Destination */}
         <div className="flex items-center gap-2 min-w-[250px]">
-          <span className="text-lg font-medium">{route.origin}</span>
+          <span className="text-base font-medium">{route.origin}</span>
           <ArrowRight className="text-gray-400" size={16} />
-          <span className="text-lg font-medium">{route.destination}</span>
+          <span className="text-base font-medium">{route.destination}</span>
         </div>
         
         {/* Time */}
@@ -38,15 +38,15 @@ const RouteCard: React.FC<RouteCardProps> = ({ route }) => {
         </div>
         
         {/* Available seats */}
-        <div className={`${seatsTextColor} font-medium flex-1 ml-4`}>
+        <div className={`${seatsTextColor} text-base flex-1`}>
           {route.seatsAvailable} {route.seatsAvailable === 1 ? 'assento disponível' : 'assentos disponíveis'}
         </div>
         
         {/* Price */}
         <div className="text-right mr-4">
-          <div className="text-sm text-gray-500">Preço</div>
-          <div className="text-xl font-bold text-blue-700">
-            R$ {route.price.toFixed(2).replace(".", ",")}
+          <div className="text-xs text-gray-500">Preço</div>
+          <div className="text-lg font-bold text-blue-700">
+            R$ {route.price.toFixed(0)},00
           </div>
         </div>
         

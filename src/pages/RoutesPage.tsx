@@ -6,26 +6,26 @@ import RouteCard from "../components/RouteCard";
 import { useTicket } from "../context/TicketContext";
 import { format, parseISO, isValid } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { Clock } from "lucide-react";
+import { Clock, ArrowRight } from "lucide-react";
+import { Button } from "../components/ui/button";
 
 const RoutesPage: React.FC = () => {
   const { routes } = useTicket();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const [filteredRoutes, setFilteredRoutes] = useState(routes);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
   const origin = searchParams.get("origin");
   const destination = searchParams.get("destination");
   const dateParam = searchParams.get("date");
-  
+
   // Check if it's one of our main routes
   const isMainRoute = (origin === "Belém" && destination === "São Caetano") || 
-                      (origin === "São Caetano" && destination === "Belém") ||
-                      (origin === "São Paulo" && destination === "Rio de Janeiro") ||
-                      (origin === "Rio de Janeiro" && destination === "São Paulo") ||
-                      (origin === "São Paulo" && destination === "Belo Horizonte") ||
-                      (origin === "Belo Horizonte" && destination === "São Paulo");
+                    (origin === "São Caetano" && destination === "Belém") ||
+                    (origin === "São Paulo" && destination === "Rio de Janeiro") ||
+                    (origin === "Rio de Janeiro" && destination === "São Paulo") ||
+                    (origin === "São Paulo" && destination === "Belo Horizonte") ||
+                    (origin === "Belo Horizonte" && destination === "São Paulo");
 
   useEffect(() => {
     let filtered = [...routes];
@@ -49,15 +49,8 @@ const RoutesPage: React.FC = () => {
       }
     }
 
-    if (selectedTime) {
-      filtered = filtered.filter(route => {
-        const routeTime = new Date(route.departureTime).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-        return routeTime === selectedTime;
-      });
-    }
-
     setFilteredRoutes(filtered);
-  }, [routes, origin, destination, dateParam, selectedTime]);
+  }, [routes, origin, destination, dateParam]);
 
   const getFormattedDateString = () => {
     if (dateParam && isValid(new Date(dateParam))) {
@@ -66,56 +59,54 @@ const RoutesPage: React.FC = () => {
     return "";
   };
 
-  // Define time schedules for different routes
-  const getRouteTimeSchedules = () => {
-    if (origin === "Belém" && destination === "São Caetano") {
-      return ['07:00', '08:00', '10:00', '14:00', '16:30', '18:00'];
-    } 
-    else if (origin === "São Caetano" && destination === "Belém") {
-      return ['04:00', '05:00', '10:20', '11:20', '13:20', '17:00'];
+  // Rotas predefinidas para serem exibidas no formato da imagem
+  const predefinedRoutes = [
+    {
+      origin: "São Paulo",
+      destination: "Rio de Janeiro",
+      time: "08:00",
+      seats: 15,
+      price: 120
+    },
+    {
+      origin: "Rio de Janeiro",
+      destination: "São Paulo", 
+      time: "16:00",
+      seats: 10,
+      price: 120
+    },
+    {
+      origin: "São Paulo",
+      destination: "Belo Horizonte",
+      time: "09:30",
+      seats: 12,
+      price: 100
+    },
+    {
+      origin: "Belo Horizonte",
+      destination: "São Paulo",
+      time: "10:00",
+      seats: 8,
+      price: 100
     }
-    else if (origin === "São Paulo" && destination === "Rio de Janeiro") {
-      return ['08:00'];
-    }
-    else if (origin === "Rio de Janeiro" && destination === "São Paulo") {
-      return ['16:00'];
-    }
-    else if (origin === "São Paulo" && destination === "Belo Horizonte") {
-      return ['09:30'];
-    }
-    else if (origin === "Belo Horizonte" && destination === "São Paulo") {
-      return ['10:00'];
-    }
-    return [];
-  };
+  ];
 
-  // Handle time selection 
-  const handleTimeSelect = (time: string) => {
-    if (selectedTime === time) {
-      setSelectedTime(null); // Toggle off if already selected
-    } else {
-      setSelectedTime(time);
+  const handleSelectRoute = (from: string, to: string, time: string) => {
+    // Find a matching route based on origin, destination, and time
+    const matchingRoute = routes.find(route => {
+      const routeOrigin = route.origin;
+      const routeDestination = route.destination;
+      const routeTime = new Date(route.departureTime).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
       
-      // If we have a valid date, find and navigate to a matching route
-      if (dateParam && isValid(new Date(dateParam))) {
-        const matchingRoute = routes.find(route => {
-          const routeOrigin = route.origin;
-          const routeDestination = route.destination;
-          const routeTime = new Date(route.departureTime).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-          const routeDate = format(parseISO(route.departureTime), "yyyy-MM-dd");
-          
-          return (
-            routeOrigin === origin &&
-            routeDestination === destination &&
-            routeTime === time &&
-            routeDate === format(new Date(dateParam), "yyyy-MM-dd")
-          );
-        });
-        
-        if (matchingRoute) {
-          navigate(`/route/${matchingRoute.id}`);
-        }
-      }
+      return (
+        routeOrigin === from &&
+        routeDestination === to &&
+        routeTime === time
+      );
+    });
+    
+    if (matchingRoute) {
+      navigate(`/route/${matchingRoute.id}`);
     }
   };
 
@@ -160,47 +151,50 @@ const RoutesPage: React.FC = () => {
               </div>
             ) : (
               <div className="p-6">
-                <h3 className="text-lg font-semibold mb-4">Horários de partida disponíveis</h3>
-                
-                {/* For main routes, show schedule info */}
-                {isMainRoute && (
-                  <div className="mb-8">
-                    <div className="mb-6">
-                      <h4 className="font-medium mb-3 text-gray-800">
-                        {origin} → {destination} (todos os dias)
-                      </h4>
-                      <div className="flex flex-wrap gap-3 mb-3">
-                        {getRouteTimeSchedules().map((time) => (
-                          <button
-                            key={time}
-                            onClick={() => handleTimeSelect(time)}
-                            className={`bg-blue-50 text-blue-700 px-5 py-2 rounded-full border transition-all ${
-                              selectedTime === time 
-                                ? 'border-blue-700 bg-blue-100 shadow-sm' 
-                                : 'border-blue-200 hover:bg-blue-100'
-                            } flex items-center`}
+                {/* Display routes list in the new format */}
+                <div className="mb-8">
+                  <div className="divide-y">
+                    {predefinedRoutes.map((route, index) => (
+                      <div key={index} className="py-5 px-4 hover:bg-gray-50">
+                        <div className="flex flex-row items-center justify-between">
+                          {/* Origin/Destination */}
+                          <div className="flex items-center gap-2 min-w-[250px]">
+                            <span className="text-base font-medium">{route.origin}</span>
+                            <ArrowRight className="text-gray-400" size={16} />
+                            <span className="text-base font-medium">{route.destination}</span>
+                          </div>
+                          
+                          {/* Time */}
+                          <div className="flex items-center">
+                            <Clock size={18} className="text-gray-500 mr-1" />
+                            <span className="text-base">{route.time}</span>
+                          </div>
+                          
+                          {/* Available seats */}
+                          <div className="text-green-600 text-base flex-1">
+                            {route.seats} assentos disponíveis
+                          </div>
+                          
+                          {/* Price */}
+                          <div className="text-right mr-4">
+                            <div className="text-xs text-gray-500">Preço</div>
+                            <div className="text-lg font-bold text-blue-700">
+                              R$ {route.price},00
+                            </div>
+                          </div>
+                          
+                          {/* Button */}
+                          <Button 
+                            onClick={() => handleSelectRoute(route.origin, route.destination, route.time)}
+                            className="bg-blue-700 hover:bg-blue-800"
                           >
-                            <Clock size={16} className="mr-2" />
-                            {time}
-                          </button>
-                        ))}
+                            Selecionar
+                          </Button>
+                        </div>
                       </div>
-                      <p className="text-sm text-gray-500 mt-3">
-                        Escolha uma data para ver a disponibilidade específica.
-                      </p>
-                    </div>
+                    ))}
                   </div>
-                )}
-                
-                {/* For non-main routes without results */}
-                {!isMainRoute && (
-                  <div className="text-center py-4">
-                    <h3 className="text-lg font-semibold mb-2">Nenhuma rota encontrada</h3>
-                    <p className="text-gray-600 mb-4">
-                      Tente ajustar seus critérios de busca ou escolher datas diferentes.
-                    </p>
-                  </div>
-                )}
+                </div>
               </div>
             )}
           </div>
