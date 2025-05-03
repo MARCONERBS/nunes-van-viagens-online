@@ -2,7 +2,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
-import { Input } from "./ui/input";
 import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Calendar } from "./ui/calendar";
@@ -12,7 +11,10 @@ import { ptBR } from "date-fns/locale";
 import { cn } from "../lib/utils";
 import { CalendarIcon, Search } from "lucide-react";
 
+// Updated list of cities including Belém and São Caetano
 const cities = [
+  "Belém", 
+  "São Caetano",
   "São Paulo", 
   "Rio de Janeiro", 
   "Belo Horizonte", 

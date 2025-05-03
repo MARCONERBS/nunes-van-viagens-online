@@ -15,9 +15,9 @@ const RoutesPage: React.FC = () => {
   const destination = searchParams.get("destination");
   const dateParam = searchParams.get("date");
   
-  // Destacar os itinerários principais
-  const isMainRoute = origin === "Belém" && destination === "São Caetano" || 
-                      origin === "São Caetano" && destination === "Belém";
+  // Check if it's one of our main routes
+  const isMainRoute = (origin === "Belém" && destination === "São Caetano") || 
+                      (origin === "São Caetano" && destination === "Belém");
 
   useEffect(() => {
     let filtered = [...routes];
@@ -63,12 +63,9 @@ const RoutesPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="flex justify-between items-center mb-6">
             <h2 className="text-xl font-semibold">
-              {/* Modificado para não mostrar "nenhum resultado" quando é uma rota principal */}
-              {isMainRoute 
-                ? "Horários Disponíveis" 
-                : filteredRoutes.length > 0 
-                  ? `${filteredRoutes.length} ${filteredRoutes.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}`
-                  : 'Nenhum resultado encontrado'}
+              {filteredRoutes.length > 0 
+                ? `${filteredRoutes.length} ${filteredRoutes.length === 1 ? 'resultado encontrado' : 'resultados encontrados'}`
+                : isMainRoute ? 'Horários Disponíveis' : 'Nenhum resultado encontrado'}
             </h2>
             
             {origin && destination && (
@@ -81,58 +78,61 @@ const RoutesPage: React.FC = () => {
             )}
           </div>
 
-          {/* Itinerários Principais Belém x São Caetano */}
-          {isMainRoute && (
-            <div className="mb-8 bg-nunes-light p-6 rounded-lg">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                {origin === "Belém" && destination === "São Caetano" && (
-                  <div>
-                    <h4 className="font-medium mb-2">Belém → São Caetano (todos os dias)</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {['07:00', '08:00', '10:00', '14:00', '16:30', '18:00'].map((hour) => (
-                        <span key={hour} className="bg-white border border-nunes-primary text-nunes-primary px-3 py-1 rounded-full text-sm">
-                          {hour}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-
-                {origin === "São Caetano" && destination === "Belém" && (
-                  <div>
-                    <h4 className="font-medium mb-2">São Caetano → Belém (todos os dias)</h4>
-                    <div className="flex flex-wrap gap-2">
-                      {['04:00', '05:00', '10:20', '11:20', '13:20', '17:00'].map((hour) => (
-                        <span key={hour} className="bg-white border border-nunes-primary text-nunes-primary px-3 py-1 rounded-full text-sm">
-                          {hour}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                )}
-              </div>
-              
-              <div className="mt-4 text-sm text-gray-600">
-                <p>As passagens podem ser compradas diretamente com o motorista ou reservadas online.</p>
-              </div>
-            </div>
-          )}
-
-          {/* Modificado para não mostrar a mensagem de nenhum resultado quando é uma rota principal */}
-          {!isMainRoute && filteredRoutes.length === 0 ? (
-            <div className="bg-white p-8 rounded-lg shadow text-center">
-              <h3 className="text-lg font-semibold mb-2">Nenhuma rota encontrada</h3>
-              <p className="text-gray-600 mb-4">
-                Tente ajustar seus critérios de busca ou escolher datas diferentes.
-              </p>
+          {/* Either show filtered routes or a message */}
+          {filteredRoutes.length > 0 ? (
+            <div className="space-y-4">
+              {filteredRoutes.map((route) => (
+                <RouteCard key={route.id} route={route} />
+              ))}
             </div>
           ) : (
             <>
-              {filteredRoutes.length > 0 && (
-                <div className="grid gap-6">
-                  {filteredRoutes.map((route) => (
-                    <RouteCard key={route.id} route={route} />
-                  ))}
+              {/* For main routes (Belém x São Caetano), show schedule info */}
+              {isMainRoute && (
+                <div className="bg-white p-6 rounded-lg shadow mb-6">
+                  <h3 className="text-lg font-semibold mb-4">Horários de partida disponíveis</h3>
+                  
+                  {origin === "Belém" && destination === "São Caetano" && (
+                    <div className="mb-4">
+                      <h4 className="font-medium mb-2">Belém → São Caetano (todos os dias)</h4>
+                      <div className="flex flex-wrap gap-3 mb-2">
+                        {['07:00', '08:00', '10:00', '14:00', '16:30', '18:00'].map((time) => (
+                          <span key={time} className="bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-200">
+                            {time}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-gray-500 mt-2">
+                        Escolha uma data para ver a disponibilidade específica.
+                      </p>
+                    </div>
+                  )}
+                  
+                  {origin === "São Caetano" && destination === "Belém" && (
+                    <div>
+                      <h4 className="font-medium mb-2">São Caetano → Belém (todos os dias)</h4>
+                      <div className="flex flex-wrap gap-3 mb-2">
+                        {['04:00', '05:00', '10:20', '11:20', '13:20', '17:00'].map((time) => (
+                          <span key={time} className="bg-blue-50 text-blue-700 px-4 py-2 rounded-full border border-blue-200">
+                            {time}
+                          </span>
+                        ))}
+                      </div>
+                      <p className="text-sm text-gray-500 mt-2">
+                        Escolha uma data para ver a disponibilidade específica.
+                      </p>
+                    </div>
+                  )}
+                </div>
+              )}
+              
+              {/* For non-main routes without results */}
+              {!isMainRoute && (
+                <div className="bg-white p-8 rounded-lg shadow text-center">
+                  <h3 className="text-lg font-semibold mb-2">Nenhuma rota encontrada</h3>
+                  <p className="text-gray-600 mb-4">
+                    Tente ajustar seus critérios de busca ou escolher datas diferentes.
+                  </p>
                 </div>
               )}
             </>
