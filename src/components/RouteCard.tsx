@@ -27,44 +27,40 @@ const RouteCard: React.FC<RouteCardProps> = ({ route }) => {
   const arrival = formatDateTime(route.arrivalTime);
 
   const seatsTextColor = route.seatsAvailable < 5 ? 'text-red-500' : 'text-green-600';
+  const isMainRoute = (route.origin === "Belém" && route.destination === "São Caetano") || 
+                      (route.origin === "São Caetano" && route.destination === "Belém");
 
   return (
-    <Card className="overflow-hidden border-gray-200 hover:border-gray-300 transition-all">
-      <div className="p-6 flex flex-col md:flex-row justify-between items-start gap-4">
+    <div className="p-4 transition-all hover:bg-gray-50 border-b last:border-b-0">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         {/* Left side - Route information */}
-        <div className="flex-1">
+        <div className="flex flex-col md:flex-row md:items-center gap-3 md:gap-6">
           {/* Origin to Destination */}
-          <div className="flex items-center space-x-2 mb-4">
-            <span className="text-xl font-semibold">{route.origin}</span>
-            <ArrowRight className="text-orange-500" />
-            <span className="text-xl font-semibold">{route.destination}</span>
+          <div className="flex items-center space-x-2">
+            <span className="text-lg font-semibold">{route.origin}</span>
+            <ArrowRight className="text-gray-400" size={18} />
+            <span className="text-lg font-semibold">{route.destination}</span>
           </div>
           
-          {/* Date and time */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-3">
-            <div className="flex items-center">
-              <Calendar size={18} className="mr-2 text-gray-500" />
-              <span className="text-gray-700">{departure.date}</span>
-            </div>
-            <div className="flex items-center">
-              <Clock size={18} className="mr-2 text-gray-500" />
-              <span className="text-gray-700">
-                Saída: {departure.time} | Chegada: {arrival.time}
-              </span>
-            </div>
+          {/* Time */}
+          <div className="flex items-center text-gray-700">
+            <Clock size={16} className="mr-2 text-gray-500" />
+            <span>
+              {departure.time}
+            </span>
           </div>
           
           {/* Available seats */}
-          <div className={`${seatsTextColor} font-medium`}>
+          <div className={`${seatsTextColor} font-medium text-sm hidden md:block`}>
             {route.seatsAvailable} {route.seatsAvailable === 1 ? 'assento disponível' : 'assentos disponíveis'}
           </div>
         </div>
         
         {/* Right side - Price and action */}
-        <div className="flex flex-col items-end gap-4">
-          <div className="text-right">
-            <div className="text-sm text-gray-500">A partir de</div>
-            <div className="text-2xl font-bold text-blue-700">
+        <div className="flex items-center gap-4 ml-auto">
+          <div className="text-right mr-2">
+            <div className="text-sm text-gray-500">Preço</div>
+            <div className="text-lg font-bold text-blue-700">
               R$ {route.price.toFixed(2).replace(".", ",")}
             </div>
           </div>
@@ -72,12 +68,18 @@ const RouteCard: React.FC<RouteCardProps> = ({ route }) => {
           <Button 
             onClick={() => navigate(`/route/${route.id}`)}
             className="bg-blue-700 hover:bg-blue-800"
+            size="sm"
           >
             Selecionar
           </Button>
         </div>
       </div>
-    </Card>
+      
+      {/* Mobile-only seats display */}
+      <div className={`${seatsTextColor} font-medium text-sm md:hidden mt-2`}>
+        {route.seatsAvailable} {route.seatsAvailable === 1 ? 'assento disponível' : 'assentos disponíveis'}
+      </div>
+    </div>
   );
 };
 
