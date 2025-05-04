@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
 import { useAuth } from "../context/AuthContext";
-import { Caravan, Menu, User, X } from "lucide-react";
+import { Menu, User, X } from "lucide-react";
 
 const Navbar: React.FC = () => {
   const { user, logout, isAuthenticated } = useAuth();
@@ -19,9 +19,12 @@ const Navbar: React.FC = () => {
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <Caravan size={28} className="text-amber-500" />
-            <span className="text-xl font-bold logo">Nunes Van</span>
+          <Link to="/" className="flex items-center">
+            <img 
+              src="/lovable-uploads/2fa13a56-4412-400f-b5ec-6e48744d5d64.png" 
+              alt="Nunes Van" 
+              className="h-10"
+            />
           </Link>
 
           {/* Desktop Navigation */}

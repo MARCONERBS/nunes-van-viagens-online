@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Bus, Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
+import { Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -10,9 +10,13 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Logo & About */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <Bus size={24} className="text-amber-500" />
-              <span className="text-xl font-bold logo">Nunes Van</span>
+            <div>
+              <img 
+                src="/lovable-uploads/2fa13a56-4412-400f-b5ec-6e48744d5d64.png" 
+                alt="Nunes Van" 
+                className="h-10"
+              />
+              <p className="text-xs text-gray-400 mt-1">Soluções Premium em Transportes</p>
             </div>
             <p className="text-gray-300 text-sm">
               Oferecemos serviços de transporte de passageiros entre Belém e São Caetano com conforto, 
