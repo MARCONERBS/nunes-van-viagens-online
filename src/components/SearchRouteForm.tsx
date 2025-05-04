@@ -119,7 +119,7 @@ const SearchRouteForm: React.FC = () => {
         <div className="flex items-end">
           <Button 
             type="submit" 
-            className="w-full bg-nunes-primary hover:bg-nunes-primary/90 h-10 flex items-center justify-center"
+            className="w-full bg-blue-700 hover:bg-blue-800 h-10 flex items-center justify-center"
             disabled={!origin || !destination || !date}
           >
             <Search size={18} className="mr-2" />

@@ -1,14 +1,15 @@
+
 import React from "react";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 import SearchRouteForm from "../components/SearchRouteForm";
-import { Calendar, Clock, MapPin, Shield, Star, Caravan, Bus } from "lucide-react";
+import { Calendar, Clock, MapPin, Shield, Star, Caravan, Bus, Search } from "lucide-react";
 
 const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="bg-gradient-to-r from-nunes-primary to-nunes-secondary text-white py-20">
+      <section className="bg-gradient-to-r from-blue-900 to-blue-600 text-white py-20">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0">
@@ -22,7 +23,7 @@ const HomePage: React.FC = () => {
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-nunes-accent hover:bg-nunes-accent/90 text-white"
+                  className="bg-amber-500 hover:bg-amber-600 text-white"
                 >
                   <Link to="/routes">Ver horários</Link>
                 </Button>
@@ -30,7 +31,7 @@ const HomePage: React.FC = () => {
                   asChild
                   size="lg" 
                   variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-nunes-primary"
+                  className="text-white border-white hover:bg-white hover:text-blue-800"
                 >
                   <Link to="/about">Sobre nós</Link>
                 </Button>
@@ -68,14 +69,14 @@ const HomePage: React.FC = () => {
             {/* Belém x São Caetano */}
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <div className="flex items-center gap-2 mb-4">
-                <Bus className="text-nunes-primary" />
+                <Bus className="text-blue-800" />
                 <h3 className="text-xl font-semibold">Belém → São Caetano</h3>
               </div>
               <div className="space-y-2 mb-4">
                 <p className="font-medium text-gray-700">Horários de partida:</p>
                 <div className="flex flex-wrap gap-2">
                   {['07:00', '08:00', '10:00', '14:00', '16:30', '18:00'].map((hour) => (
-                    <span key={hour} className="bg-nunes-light text-nunes-primary px-3 py-1 rounded-full text-sm">
+                    <span key={hour} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                       {hour}
                     </span>
                   ))}
@@ -85,7 +86,7 @@ const HomePage: React.FC = () => {
                 <Button 
                   asChild
                   size="sm"
-                  className="bg-nunes-secondary hover:bg-nunes-secondary/90"
+                  className="bg-blue-700 hover:bg-blue-800"
                 >
                   <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver detalhes</Link>
                 </Button>
@@ -95,14 +96,14 @@ const HomePage: React.FC = () => {
             {/* São Caetano x Belém */}
             <div className="bg-gray-50 p-6 rounded-lg shadow-md">
               <div className="flex items-center gap-2 mb-4">
-                <Bus className="text-nunes-primary" />
+                <Bus className="text-blue-800" />
                 <h3 className="text-xl font-semibold">São Caetano → Belém</h3>
               </div>
               <div className="space-y-2 mb-4">
                 <p className="font-medium text-gray-700">Horários de partida:</p>
                 <div className="flex flex-wrap gap-2">
                   {['04:00', '05:00', '10:20', '11:20', '13:20', '17:00'].map((hour) => (
-                    <span key={hour} className="bg-nunes-light text-nunes-primary px-3 py-1 rounded-full text-sm">
+                    <span key={hour} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
                       {hour}
                     </span>
                   ))}
@@ -112,7 +113,7 @@ const HomePage: React.FC = () => {
                 <Button 
                   asChild
                   size="sm"
-                  className="bg-nunes-secondary hover:bg-nunes-secondary/90"
+                  className="bg-blue-700 hover:bg-blue-800"
                 >
                   <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver detalhes</Link>
                 </Button>
@@ -135,8 +136,8 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-nunes-light rounded-full flex items-center justify-center mb-4">
-                <Clock className="text-nunes-primary text-2xl" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Clock className="text-blue-800 text-2xl" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Pontualidade</h3>
               <p className="text-gray-600">
@@ -145,8 +146,8 @@ const HomePage: React.FC = () => {
             </div>
 
             <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-nunes-light rounded-full flex items-center justify-center mb-4">
-                <Shield className="text-nunes-primary text-2xl" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Shield className="text-blue-800 text-2xl" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Segurança</h3>
               <p className="text-gray-600">
@@ -155,8 +156,8 @@ const HomePage: React.FC = () => {
             </div>
 
             <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-nunes-light rounded-full flex items-center justify-center mb-4">
-                <Star className="text-nunes-primary text-2xl" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Star className="text-blue-800 text-2xl" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Conforto</h3>
               <p className="text-gray-600">
@@ -165,8 +166,8 @@ const HomePage: React.FC = () => {
             </div>
 
             <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-nunes-light rounded-full flex items-center justify-center mb-4">
-                <MapPin className="text-nunes-primary text-2xl" />
+              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <MapPin className="text-blue-800 text-2xl" />
               </div>
               <h3 className="text-xl font-semibold mb-2">Flexibilidade</h3>
               <p className="text-gray-600">
@@ -196,8 +197,8 @@ const HomePage: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">Belém → São Caetano</h3>
                 <p className="text-gray-600 mb-4">Viagem executiva em van com WiFi e tomadas USB</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-nunes-primary font-bold">A partir de R$ 25,00</span>
-                  <Button asChild size="sm" className="bg-nunes-secondary hover:bg-nunes-secondary/90">
+                  <span className="text-blue-800 font-bold">A partir de R$ 25,00</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800">
                     <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver horários</Link>
                   </Button>
                 </div>
@@ -215,8 +216,8 @@ const HomePage: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">São Caetano → Belém</h3>
                 <p className="text-gray-600 mb-4">Van executiva com paradas em pontos estratégicos</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-nunes-primary font-bold">A partir de R$ 25,00</span>
-                  <Button asChild size="sm" className="bg-nunes-secondary hover:bg-nunes-secondary/90">
+                  <span className="text-blue-800 font-bold">A partir de R$ 25,00</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800">
                     <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver horários</Link>
                   </Button>
                 </div>
@@ -234,8 +235,8 @@ const HomePage: React.FC = () => {
                 <h3 className="text-xl font-semibold mb-2">Outras Rotas</h3>
                 <p className="text-gray-600 mb-4">Conheça todas as nossas opções de destinos</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-nunes-primary font-bold">Diversos valores</span>
-                  <Button asChild size="sm" className="bg-nunes-secondary hover:bg-nunes-secondary/90">
+                  <span className="text-blue-800 font-bold">Diversos valores</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800">
                     <Link to="/routes">Ver todas</Link>
                   </Button>
                 </div>
@@ -247,7 +248,7 @@ const HomePage: React.FC = () => {
             <Button 
               asChild
               size="lg"
-              className="bg-nunes-primary hover:bg-nunes-primary/90"
+              className="bg-blue-800 hover:bg-blue-900"
             >
               <Link to="/routes">Ver todas as rotas</Link>
             </Button>
@@ -256,7 +257,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-nunes-primary text-white">
+      <section className="py-16 bg-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-bold mb-6">
             Transporte executivo em van com a Nunes Van
@@ -267,7 +268,7 @@ const HomePage: React.FC = () => {
           <Button 
             asChild
             size="lg"
-            className="bg-nunes-accent hover:bg-nunes-accent/90 text-white"
+            className="bg-amber-500 hover:bg-amber-600 text-white"
           >
             <Link to="/register">Cadastre-se gratuitamente</Link>
           </Button>

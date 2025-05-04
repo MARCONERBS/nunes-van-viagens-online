@@ -15,27 +15,27 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <header className="bg-nunes-primary text-white shadow-md">
+    <header className="bg-blue-900 text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
-            <Caravan size={28} className="text-nunes-accent" />
+            <Caravan size={28} className="text-amber-500" />
             <span className="text-xl font-bold logo">Nunes Van</span>
           </Link>
 
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link to="/" className="hover:text-nunes-accent transition-colors">
+            <Link to="/" className="hover:text-amber-400 transition-colors font-medium">
               Início
             </Link>
-            <Link to="/routes" className="hover:text-nunes-accent transition-colors">
+            <Link to="/routes" className="hover:text-amber-400 transition-colors font-medium">
               Horários
             </Link>
-            <Link to="/about" className="hover:text-nunes-accent transition-colors">
+            <Link to="/about" className="hover:text-amber-400 transition-colors font-medium">
               Sobre Nós
             </Link>
-            <Link to="/contact" className="hover:text-nunes-accent transition-colors">
+            <Link to="/contact" className="hover:text-amber-400 transition-colors font-medium">
               Contato
             </Link>
           </nav>
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
               <div className="flex items-center space-x-4">
                 <Link 
                   to={user?.role === "admin" ? "/admin" : "/my-account"}
-                  className="flex items-center space-x-2 hover:text-nunes-accent transition-colors"
+                  className="flex items-center space-x-2 hover:text-amber-400 transition-colors"
                 >
                   <User size={20} />
                   <span>{user?.name}</span>
@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
                     logout();
                     navigate("/");
                   }}
-                  className="text-white border-white hover:bg-white hover:text-nunes-primary"
+                  className="text-white border-white hover:bg-white hover:text-blue-900"
                 >
                   Sair
                 </Button>
@@ -67,13 +67,13 @@ const Navbar: React.FC = () => {
                 <Button 
                   variant="outline" 
                   onClick={() => navigate("/login")} 
-                  className="text-white border-white hover:bg-white hover:text-nunes-primary"
+                  className="text-white border-white hover:bg-white hover:text-blue-900"
                 >
                   Entrar
                 </Button>
                 <Button 
                   onClick={() => navigate("/register")}
-                  className="bg-nunes-accent hover:bg-nunes-accent/90 text-white"
+                  className="bg-amber-500 hover:bg-amber-600 text-white"
                 >
                   Cadastrar
                 </Button>
@@ -93,42 +93,42 @@ const Navbar: React.FC = () => {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <div className="md:hidden bg-nunes-primary border-t border-nunes-primary/20 px-4 pt-2 pb-4">
+        <div className="md:hidden bg-blue-900 border-t border-blue-800 px-4 pt-2 pb-4">
           <nav className="flex flex-col space-y-4">
             <Link 
               to="/" 
-              className="block py-2 hover:text-nunes-accent transition-colors"
+              className="block py-2 hover:text-amber-400 transition-colors"
               onClick={toggleMenu}
             >
               Início
             </Link>
             <Link 
               to="/routes" 
-              className="block py-2 hover:text-nunes-accent transition-colors"
+              className="block py-2 hover:text-amber-400 transition-colors"
               onClick={toggleMenu}
             >
               Horários
             </Link>
             <Link 
               to="/about" 
-              className="block py-2 hover:text-nunes-accent transition-colors"
+              className="block py-2 hover:text-amber-400 transition-colors"
               onClick={toggleMenu}
             >
               Sobre Nós
             </Link>
             <Link 
               to="/contact" 
-              className="block py-2 hover:text-nunes-accent transition-colors"
+              className="block py-2 hover:text-amber-400 transition-colors"
               onClick={toggleMenu}
             >
               Contato
             </Link>
-            <hr className="border-nunes-primary/20" />
+            <hr className="border-blue-800" />
             {isAuthenticated ? (
               <>
                 <Link 
                   to={user?.role === "admin" ? "/admin" : "/my-account"} 
-                  className="block py-2 flex items-center space-x-2 hover:text-nunes-accent transition-colors"
+                  className="block py-2 flex items-center space-x-2 hover:text-amber-400 transition-colors"
                   onClick={toggleMenu}
                 >
                   <User size={20} />
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                     navigate("/");
                     toggleMenu();
                   }}
-                  className="text-white border-white hover:bg-white hover:text-nunes-primary w-full"
+                  className="text-white border-white hover:bg-white hover:text-blue-900 w-full"
                 >
                   Sair
                 </Button>
@@ -154,7 +154,7 @@ const Navbar: React.FC = () => {
                     navigate("/login");
                     toggleMenu();
                   }}
-                  className="text-white border-white hover:bg-white hover:text-nunes-primary w-full"
+                  className="text-white border-white hover:bg-white hover:text-blue-900 w-full"
                 >
                   Entrar
                 </Button>
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
                     navigate("/register");
                     toggleMenu();
                   }}
-                  className="bg-nunes-accent hover:bg-nunes-accent/90 text-white w-full"
+                  className="bg-amber-500 hover:bg-amber-600 text-white w-full"
                 >
                   Cadastrar
                 </Button>
