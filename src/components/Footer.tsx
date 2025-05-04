@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Link } from "react-router-dom";
-import { Bus } from "lucide-react";
+import { Bus, Facebook, Instagram, Twitter, MapPin, Phone, Mail } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -15,9 +15,20 @@ const Footer: React.FC = () => {
               <span className="text-xl font-bold logo">Nunes Van</span>
             </div>
             <p className="text-gray-300 text-sm">
-              Oferecemos serviços de transporte de passageiros com conforto, 
+              Oferecemos serviços de transporte de passageiros entre Belém e São Caetano com conforto, 
               segurança e pontualidade. Conectando pessoas e destinos desde 2015.
             </p>
+            <div className="flex space-x-4 pt-2">
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Facebook size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Instagram size={20} />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-white transition-colors">
+                <Twitter size={20} />
+              </a>
+            </div>
           </div>
 
           {/* Quick Links */}
@@ -47,24 +58,24 @@ const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Destinos em Belém */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Legal</h3>
+            <h3 className="text-lg font-semibold mb-4">Pontos em Belém</h3>
             <ul className="space-y-2 text-gray-300">
               <li>
-                <Link to="/terms" className="hover:text-amber-400 transition-colors">
-                  Termos de Uso
-                </Link>
+                Terminal Rodoviário de Belém
               </li>
               <li>
-                <Link to="/privacy" className="hover:text-amber-400 transition-colors">
-                  Política de Privacidade
-                </Link>
+                Ver-o-Peso
               </li>
               <li>
-                <Link to="/refund" className="hover:text-amber-400 transition-colors">
-                  Política de Reembolso
-                </Link>
+                Shopping Pátio Belém
+              </li>
+              <li>
+                Cidade Velha
+              </li>
+              <li>
+                Estação das Docas
               </li>
             </ul>
           </div>
@@ -72,10 +83,19 @@ const Footer: React.FC = () => {
           {/* Contact */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Contato</h3>
-            <ul className="space-y-2 text-gray-300">
-              <li>Telefone: (11) 9999-9999</li>
-              <li>Email: contato@nunesvan.com</li>
-              <li>Endereço: Av. Paulista, 1000 - São Paulo</li>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start space-x-2">
+                <Phone size={18} className="mt-1 flex-shrink-0" />
+                <span>(91) 9999-9999</span>
+              </li>
+              <li className="flex items-start space-x-2">
+                <Mail size={18} className="mt-1 flex-shrink-0" />
+                <span>contato@nunesvan.com</span>
+              </li>
+              <li className="flex items-start space-x-2">
+                <MapPin size={18} className="mt-1 flex-shrink-0" />
+                <span>Terminal Rodoviário de Belém - Av. Almirante Barroso, Belém - PA</span>
+              </li>
             </ul>
           </div>
         </div>

@@ -3,7 +3,7 @@ import React from "react";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 import SearchRouteForm from "../components/SearchRouteForm";
-import { Calendar, Clock, MapPin, Shield, Star, Caravan, Bus, Search } from "lucide-react";
+import { Calendar, Clock, MapPin, Shield, Star, Caravan, Bus, Search, Users, Award, ThumbsUp } from "lucide-react";
 
 const HomePage: React.FC = () => {
   return (
@@ -17,13 +17,13 @@ const HomePage: React.FC = () => {
                 Viagens em van com conforto e agilidade
               </h1>
               <p className="text-lg md:text-xl mb-8">
-                A Nunes Van oferece transporte executivo com flexibilidade para suas viagens. Reserve online e aproveite nossa frota moderna de vans.
+                A Nunes Van oferece transporte executivo entre Belém e São Caetano com flexibilidade e segurança para suas viagens. Reserve online e aproveite nossa frota moderna de vans.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button 
                   asChild
                   size="lg"
-                  className="bg-amber-500 hover:bg-amber-600 text-white"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-medium"
                 >
                   <Link to="/routes">Ver horários</Link>
                 </Button>
@@ -31,7 +31,7 @@ const HomePage: React.FC = () => {
                   asChild
                   size="lg" 
                   variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-blue-800"
+                  className="text-white border-white hover:bg-white hover:text-blue-800 font-medium"
                 >
                   <Link to="/about">Sobre nós</Link>
                 </Button>
@@ -58,8 +58,44 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* Itinerários Principais Section */}
+      {/* About Belém Section */}
       <section className="py-12 bg-white">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
+            Conheça Belém - A Cidade das Mangueiras
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?q=80&w=1935&auto=format&fit=crop"
+                alt="Belém do Pará" 
+                className="rounded-lg shadow-lg"
+              />
+            </div>
+            <div className="space-y-4">
+              <p className="text-gray-700">
+                Belém, capital do Pará, é conhecida como a "Cidade das Mangueiras" devido às árvores que embelezam suas avenidas. Com mais de 400 anos de história, a cidade possui um rico patrimônio cultural e gastronômico.
+              </p>
+              <p className="text-gray-700">
+                Do famoso Ver-o-Peso, maior feira livre da América Latina, às delícias do açaí e tacacá, Belém encanta visitantes com sua culinária e cultura ribeirinha.
+              </p>
+              <p className="text-gray-700">
+                A Nunes Van facilita seu transporte pela região, conectando Belém e São Caetano com segurança e pontualidade.
+              </p>
+              <Button 
+                asChild
+                className="bg-blue-700 hover:bg-blue-800 text-white font-medium mt-4"
+              >
+                <Link to="/about">Saiba mais sobre a região</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Itinerários Principais Section */}
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
             Itinerários Principais
@@ -67,7 +103,7 @@ const HomePage: React.FC = () => {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Belém x São Caetano */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center gap-2 mb-4">
                 <Bus className="text-blue-800" />
                 <h3 className="text-xl font-semibold">Belém → São Caetano</h3>
@@ -86,7 +122,7 @@ const HomePage: React.FC = () => {
                 <Button 
                   asChild
                   size="sm"
-                  className="bg-blue-700 hover:bg-blue-800"
+                  className="bg-blue-700 hover:bg-blue-800 text-white font-medium"
                 >
                   <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver detalhes</Link>
                 </Button>
@@ -94,7 +130,7 @@ const HomePage: React.FC = () => {
             </div>
             
             {/* São Caetano x Belém */}
-            <div className="bg-gray-50 p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-md">
               <div className="flex items-center gap-2 mb-4">
                 <Bus className="text-blue-800" />
                 <h3 className="text-xl font-semibold">São Caetano → Belém</h3>
@@ -113,7 +149,7 @@ const HomePage: React.FC = () => {
                 <Button 
                   asChild
                   size="sm"
-                  className="bg-blue-700 hover:bg-blue-800"
+                  className="bg-blue-700 hover:bg-blue-800 text-white font-medium"
                 >
                   <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver detalhes</Link>
                 </Button>
@@ -122,13 +158,13 @@ const HomePage: React.FC = () => {
           </div>
           
           <div className="text-center mt-8 text-gray-500">
-            <p>Viagens disponíveis todos os dias da semana</p>
+            <p>Viagens disponíveis todos os dias da semana, incluindo feriados</p>
           </div>
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-16">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             Por que escolher a Nunes Van?
@@ -141,7 +177,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Pontualidade</h3>
               <p className="text-gray-600">
-                Viagens com horários flexíveis e sempre pontuais para sua comodidade.
+                Viagens com horários flexíveis e sempre pontuais entre Belém e São Caetano para sua comodidade.
               </p>
             </div>
 
@@ -151,7 +187,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Segurança</h3>
               <p className="text-gray-600">
-                Vans modernas e motoristas profissionais para sua total tranquilidade.
+                Vans modernas e motoristas profissionais para sua total tranquilidade nas viagens pela região.
               </p>
             </div>
 
@@ -161,7 +197,7 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Conforto</h3>
               <p className="text-gray-600">
-                Vans executivas com poltronas confortáveis e ar-condicionado.
+                Vans executivas com poltronas confortáveis e ar-condicionado para viagens agradáveis no clima de Belém.
               </p>
             </div>
 
@@ -171,7 +207,81 @@ const HomePage: React.FC = () => {
               </div>
               <h3 className="text-xl font-semibold mb-2">Flexibilidade</h3>
               <p className="text-gray-600">
-                Rotas personalizadas e paradas em pontos estratégicos para sua conveniência.
+                Paradas em pontos estratégicos em Belém e São Caetano para sua conveniência.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="py-16 bg-gray-50">
+        <div className="container mx-auto px-4">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+            O que nossos clientes dizem
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <Users className="text-blue-800" />
+                </div>
+                <div>
+                  <h4 className="font-semibold">Maria Silva</h4>
+                  <div className="flex text-amber-400">
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                "Uso a Nunes Van toda semana para ir de Belém a São Caetano. O serviço é pontual e os motoristas são muito atenciosos. Recomendo!"
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <Users className="text-blue-800" />
+                </div>
+                <div>
+                  <h4 className="font-semibold">João Santos</h4>
+                  <div className="flex text-amber-400">
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                "Viajo frequentemente entre São Caetano e Belém e a Nunes Van é sempre minha escolha. Veículos limpos e confortáveis, mesmo com o calor da região."
+              </p>
+            </div>
+            
+            <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="flex items-center mb-4">
+                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                  <Users className="text-blue-800" />
+                </div>
+                <div>
+                  <h4 className="font-semibold">Ana Oliveira</h4>
+                  <div className="flex text-amber-400">
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} fill="currentColor" />
+                    <Star size={16} />
+                  </div>
+                </div>
+              </div>
+              <p className="text-gray-600">
+                "Ótimo custo-benefício para quem precisa se deslocar entre Belém e São Caetano. Reservar online é muito prático e sempre tem horários disponíveis."
               </p>
             </div>
           </div>
@@ -179,7 +289,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Popular Routes Section */}
-      <section className="py-16 bg-gray-100">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
             Rotas Populares
@@ -187,7 +297,7 @@ const HomePage: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {/* Updated first popular route */}
-            <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
+            <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
                 src="https://images.unsplash.com/photo-1564510182789-972d396e8fdb?q=80&w=1932&auto=format&fit=crop" 
                 alt="Belém para São Caetano" 
@@ -195,10 +305,10 @@ const HomePage: React.FC = () => {
               />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Belém → São Caetano</h3>
-                <p className="text-gray-600 mb-4">Viagem executiva em van com WiFi e tomadas USB</p>
+                <p className="text-gray-600 mb-4">Viagem executiva em van com WiFi e tomadas USB. Partindo do centro de Belém.</p>
                 <div className="flex justify-between items-center">
                   <span className="text-blue-800 font-bold">A partir de R$ 25,00</span>
-                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800">
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-medium">
                     <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver horários</Link>
                   </Button>
                 </div>
@@ -206,7 +316,7 @@ const HomePage: React.FC = () => {
             </div>
 
             {/* Updated second popular route */}
-            <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
+            <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
                 src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?q=80&w=1935&auto=format&fit=crop" 
                 alt="São Caetano para Belém" 
@@ -214,30 +324,30 @@ const HomePage: React.FC = () => {
               />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">São Caetano → Belém</h3>
-                <p className="text-gray-600 mb-4">Van executiva com paradas em pontos estratégicos</p>
+                <p className="text-gray-600 mb-4">Van executiva com paradas estratégicas em São Caetano e Belém.</p>
                 <div className="flex justify-between items-center">
                   <span className="text-blue-800 font-bold">A partir de R$ 25,00</span>
-                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800">
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-medium">
                     <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver horários</Link>
                   </Button>
                 </div>
               </div>
             </div>
 
-            {/* Keep the third route */}
-            <div className="bg-white rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
+            {/* Special route for tourists */}
+            <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?q=80&w=2070&auto=format&fit=crop" 
-                alt="Outras Rotas" 
+                src="https://images.unsplash.com/photo-1596423840906-a6f943383917?q=80&w=2070&auto=format&fit=crop" 
+                alt="Pontos Turísticos de Belém" 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Outras Rotas</h3>
-                <p className="text-gray-600 mb-4">Conheça todas as nossas opções de destinos</p>
+                <h3 className="text-xl font-semibold mb-2">Pontos Turísticos - Belém</h3>
+                <p className="text-gray-600 mb-4">Conheça os principais pontos turísticos de Belém com nosso roteiro especial</p>
                 <div className="flex justify-between items-center">
-                  <span className="text-blue-800 font-bold">Diversos valores</span>
-                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800">
-                    <Link to="/routes">Ver todas</Link>
+                  <span className="text-blue-800 font-bold">A partir de R$ 40,00</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-medium">
+                    <Link to="/routes?tour=belem">Ver detalhes</Link>
                   </Button>
                 </div>
               </div>
@@ -248,7 +358,7 @@ const HomePage: React.FC = () => {
             <Button 
               asChild
               size="lg"
-              className="bg-blue-800 hover:bg-blue-900"
+              className="bg-blue-800 hover:bg-blue-900 text-white font-medium"
             >
               <Link to="/routes">Ver todas as rotas</Link>
             </Button>
@@ -263,12 +373,12 @@ const HomePage: React.FC = () => {
             Transporte executivo em van com a Nunes Van
           </h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Cadastre-se para receber ofertas exclusivas e facilitar suas futuras reservas de viagens.
+            Cadastre-se para receber ofertas exclusivas nas rotas entre Belém e São Caetano e facilitar suas futuras reservas de viagens.
           </p>
           <Button 
             asChild
             size="lg"
-            className="bg-amber-500 hover:bg-amber-600 text-white"
+            className="bg-amber-500 hover:bg-amber-600 text-black font-medium"
           >
             <Link to="/register">Cadastre-se gratuitamente</Link>
           </Button>

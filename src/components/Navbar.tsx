@@ -57,7 +57,7 @@ const Navbar: React.FC = () => {
                     logout();
                     navigate("/");
                   }}
-                  className="text-white border-white hover:bg-white hover:text-blue-900"
+                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium"
                 >
                   Sair
                 </Button>
@@ -67,13 +67,13 @@ const Navbar: React.FC = () => {
                 <Button 
                   variant="outline" 
                   onClick={() => navigate("/login")} 
-                  className="text-white border-white hover:bg-white hover:text-blue-900"
+                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium"
                 >
                   Entrar
                 </Button>
                 <Button 
                   onClick={() => navigate("/register")}
-                  className="bg-amber-500 hover:bg-amber-600 text-white"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-medium"
                 >
                   Cadastrar
                 </Button>
@@ -141,7 +141,7 @@ const Navbar: React.FC = () => {
                     navigate("/");
                     toggleMenu();
                   }}
-                  className="text-white border-white hover:bg-white hover:text-blue-900 w-full"
+                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium w-full"
                 >
                   Sair
                 </Button>
@@ -154,7 +154,7 @@ const Navbar: React.FC = () => {
                     navigate("/login");
                     toggleMenu();
                   }}
-                  className="text-white border-white hover:bg-white hover:text-blue-900 w-full"
+                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium w-full"
                 >
                   Entrar
                 </Button>
@@ -163,7 +163,7 @@ const Navbar: React.FC = () => {
                     navigate("/register");
                     toggleMenu();
                   }}
-                  className="bg-amber-500 hover:bg-amber-600 text-white w-full"
+                  className="bg-amber-500 hover:bg-amber-600 text-black font-medium w-full"
                 >
                   Cadastrar
                 </Button>
