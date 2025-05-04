@@ -39,10 +39,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img 
-                src="https://images.unsplash.com/photo-1622959952836-c04455ab6c9e?q=80&w=2070&auto=format&fit=crop" 
-                alt="Nunes Van" 
+                src="/images/nunes-van-belem.jpg" 
+                alt="Van Executiva Nunes" 
                 className="rounded-lg shadow-xl max-w-full h-auto"
-                style={{ maxHeight: "400px" }}
+                style={{ maxHeight: "350px", objectFit: "cover" }}
               />
             </div>
           </div>
@@ -68,9 +68,10 @@ const HomePage: React.FC = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
               <img 
-                src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?q=80&w=1935&auto=format&fit=crop"
-                alt="Belém do Pará" 
-                className="rounded-lg shadow-lg"
+                src="/images/ver-o-peso-belem.jpg"
+                alt="Mercado Ver-o-Peso em Belém do Pará" 
+                className="rounded-lg shadow-lg w-full h-auto"
+                style={{ maxHeight: "300px", objectFit: "cover" }}
               />
             </div>
             <div className="space-y-4">
@@ -299,8 +300,8 @@ const HomePage: React.FC = () => {
             {/* Updated first popular route */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1564510182789-972d396e8fdb?q=80&w=1932&auto=format&fit=crop" 
-                alt="Belém para São Caetano" 
+                src="/images/terminal-rodoviario-belem.jpg" 
+                alt="Terminal Rodoviário de Belém" 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
@@ -318,7 +319,7 @@ const HomePage: React.FC = () => {
             {/* Updated second popular route */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1584646098378-0874589d76b1?q=80&w=1935&auto=format&fit=crop" 
+                src="/images/sao-caetano-belem.jpg" 
                 alt="São Caetano para Belém" 
                 className="w-full h-48 object-cover"
               />
@@ -337,8 +338,8 @@ const HomePage: React.FC = () => {
             {/* Special route for tourists */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
-                src="https://images.unsplash.com/photo-1596423840906-a6f943383917?q=80&w=2070&auto=format&fit=crop" 
-                alt="Pontos Turísticos de Belém" 
+                src="/images/estacao-das-docas-belem.jpg" 
+                alt="Estação das Docas em Belém" 
                 className="w-full h-48 object-cover"
               />
               <div className="p-6">
