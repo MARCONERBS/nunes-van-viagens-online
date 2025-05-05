@@ -8,21 +8,21 @@ const Footer: React.FC = () => {
     <footer className="bg-gray-900 text-white py-8">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Logo & About */}
-          <div className="space-y-4">
-            <div>
+          {/* Logo & About - Centered */}
+          <div className="space-y-4 flex flex-col items-center md:items-start">
+            <div className="flex justify-center md:justify-start w-full">
               <img 
-                src="/lovable-uploads/2fa13a56-4412-400f-b5ec-6e48744d5d64.png" 
+                src="/lovable-uploads/c66ed2c7-4584-49c8-89d7-6bf72d764a90.png" 
                 alt="Nunes Van" 
-                className="h-10"
+                className="h-12"
               />
-              <p className="text-xs text-gray-400 mt-1">Soluções Premium em Transportes</p>
             </div>
-            <p className="text-gray-300 text-sm">
+            <p className="text-xs text-gray-400 text-center md:text-left">Soluções Premium em Transportes</p>
+            <p className="text-gray-300 text-sm text-center md:text-left">
               Oferecemos serviços de transporte de passageiros entre Belém e São Caetano com conforto, 
               segurança e pontualidade. Conectando pessoas e destinos desde 2015.
             </p>
-            <div className="flex space-x-4 pt-2">
+            <div className="flex space-x-4 pt-2 justify-center md:justify-start">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
                 <Facebook size={20} />
               </a>

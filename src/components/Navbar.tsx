@@ -18,10 +18,10 @@ const Navbar: React.FC = () => {
     <header className="bg-blue-900 text-white shadow-md">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-          {/* Logo */}
-          <Link to="/" className="flex items-center">
+          {/* Logo - Centered on mobile */}
+          <Link to="/" className="flex items-center justify-center mx-auto md:mx-0">
             <img 
-              src="/lovable-uploads/2fa13a56-4412-400f-b5ec-6e48744d5d64.png" 
+              src="/lovable-uploads/c66ed2c7-4584-49c8-89d7-6bf72d764a90.png" 
               alt="Nunes Van" 
               className="h-10"
             />
@@ -86,7 +86,7 @@ const Navbar: React.FC = () => {
 
           {/* Mobile menu button */}
           <button 
-            className="md:hidden text-white"
+            className="md:hidden text-white absolute right-4"
             onClick={toggleMenu}
           >
             {isMenuOpen ? <X size={24} /> : <Menu size={24} />}

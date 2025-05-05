@@ -15,9 +15,9 @@ const RouteList: React.FC<RouteListProps> = ({ routes }) => {
       <div className="p-6 text-center text-gray-500 bg-white rounded-lg shadow-md">
         <div className="flex justify-center mb-4">
           <img 
-            src="/lovable-uploads/2fa13a56-4412-400f-b5ec-6e48744d5d64.png" 
+            src="/lovable-uploads/c66ed2c7-4584-49c8-89d7-6bf72d764a90.png" 
             alt="Nunes Van" 
-            className="h-16 mb-2"
+            className="h-20 mb-2"
           />
         </div>
         <p className="text-lg font-medium text-gray-700">Nenhuma rota encontrada para essa busca.</p>
