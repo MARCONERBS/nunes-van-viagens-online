@@ -20,7 +20,7 @@ const Footer: React.FC = () => {
             <p className="text-xs text-gray-400 text-center md:text-left">Soluções Premium em Transportes</p>
             <p className="text-gray-300 text-sm text-center md:text-left">
               Oferecemos serviços de transporte de passageiros entre Belém e São Caetano com conforto, 
-              segurança e pontualidade. Conectando pessoas e destinos desde 2015.
+              segurança e pontualidade. Conectando pessoas e destinos desde 2010.
             </p>
             <div className="flex space-x-4 pt-2 justify-center md:justify-start">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
