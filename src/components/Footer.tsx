@@ -14,7 +14,7 @@ const Footer: React.FC = () => {
               <img 
                 src="/lovable-uploads/c66ed2c7-4584-49c8-89d7-6bf72d764a90.png" 
                 alt="Nunes Van" 
-                className="h-12 bg-gray-900 p-1 rounded-md"
+                className="h-12"
               />
             </div>
             <p className="text-xs text-gray-400 text-center md:text-left">Soluções Premium em Transportes</p>
