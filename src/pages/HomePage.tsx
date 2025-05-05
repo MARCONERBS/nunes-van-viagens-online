@@ -1,4 +1,3 @@
-
 import React from "react";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
@@ -52,14 +51,14 @@ const HomePage: React.FC = () => {
                   asChild
                   size="lg" 
                   variant="outline" 
-                  className="text-white border-white hover:bg-white hover:text-blue-800 font-medium rounded-full px-8 py-6 h-auto transition-all duration-300"
+                  className="text-blue-800 border-white hover:bg-white hover:text-blue-900 font-medium rounded-full px-8 py-6 h-auto transition-all duration-300"
                 >
                   <Link to="/about">Sobre nós</Link>
                 </Button>
               </div>
             </motion.div>
             <motion.div 
-              className="md:w-1/2 flex justify-center"
+              className="md:w-1/2 flex justify-center items-center"
               initial={{ opacity: 0, x: 30 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
@@ -67,8 +66,8 @@ const HomePage: React.FC = () => {
               <img 
                 src="/images/terminal-rodoviario-belem.jpg" 
                 alt="Terminal Rodoviário de Belém" 
-                className="rounded-lg shadow-2xl max-w-full h-auto border-4 border-white/20"
-                style={{ maxHeight: "280px", objectFit: "cover" }}
+                className="rounded-2xl shadow-xl w-full h-auto object-cover"
+                style={{ maxWidth: "540px", maxHeight: "420px" }}
               />
             </motion.div>
           </div>
@@ -102,12 +101,12 @@ const HomePage: React.FC = () => {
       {/* Search Section */}
       <section className="py-8 bg-gray-100 relative z-10">
         <div className="container mx-auto px-4">
-          <div className="flex justify-center -mt-16">
+          <div className="flex justify-center items-center -mt-16 min-h-[180px]">
             <motion.div
               initial={{ y: 30, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className="w-full"
+              className="w-full flex justify-center"
             >
               <SearchRouteForm />
             </motion.div>

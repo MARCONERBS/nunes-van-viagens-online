@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "./ui/button";
@@ -60,7 +59,7 @@ const Navbar: React.FC = () => {
                     logout();
                     navigate("/");
                   }}
-                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium"
+                  className="text-blue-800 border-white hover:bg-white hover:text-blue-900 font-medium"
                 >
                   Sair
                 </Button>
@@ -70,7 +69,7 @@ const Navbar: React.FC = () => {
                 <Button 
                   variant="outline" 
                   onClick={() => navigate("/login")} 
-                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium"
+                  className="text-blue-800 border-white hover:bg-white hover:text-blue-900 font-medium"
                 >
                   Entrar
                 </Button>
@@ -144,7 +143,7 @@ const Navbar: React.FC = () => {
                     navigate("/");
                     toggleMenu();
                   }}
-                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium w-full"
+                  className="text-blue-800 border-white hover:bg-white hover:text-blue-900 font-medium w-full"
                 >
                   Sair
                 </Button>
@@ -157,7 +156,7 @@ const Navbar: React.FC = () => {
                     navigate("/login");
                     toggleMenu();
                   }}
-                  className="text-white border-white hover:bg-white hover:text-blue-900 font-medium w-full"
+                  className="text-blue-800 border-white hover:bg-white hover:text-blue-900 font-medium w-full"
                 >
                   Entrar
                 </Button>
