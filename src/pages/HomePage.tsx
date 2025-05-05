@@ -3,21 +3,21 @@ import React from "react";
 import { Button } from "../components/ui/button";
 import { Link } from "react-router-dom";
 import SearchRouteForm from "../components/SearchRouteForm";
-import { Calendar, Clock, MapPin, Shield, Star, Caravan, Bus, Search, Users, Award, ThumbsUp } from "lucide-react";
+import { Calendar, Clock, MapPin, Shield, Star, Bus, Search, Users, Award, ThumbsUp } from "lucide-react";
 
 const HomePage: React.FC = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-r from-blue-900 to-blue-600 text-white py-20">
+      {/* Hero Section - More compact with local-focused content */}
+      <section className="bg-gradient-to-r from-blue-900 to-blue-600 text-white py-16">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0">
-              <h1 className="text-3xl md:text-5xl font-bold mb-4">
-                Viagens em van com conforto e agilidade
+              <h1 className="text-3xl md:text-4xl font-bold mb-4">
+                Transporte executivo entre Belém e São Caetano
               </h1>
-              <p className="text-lg md:text-xl mb-8">
-                A Nunes Van oferece transporte executivo entre Belém e São Caetano com flexibilidade e segurança para suas viagens. Reserve online e aproveite nossa frota moderna de vans.
+              <p className="text-lg mb-6">
+                Viagens diárias com conforto, segurança e pontualidade na rota Belém-São Caetano. Vans modernas com ar-condicionado e Wi-Fi para sua melhor experiência.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Button 
@@ -39,10 +39,10 @@ const HomePage: React.FC = () => {
             </div>
             <div className="md:w-1/2 flex justify-center">
               <img 
-                src="/images/nunes-van-belem.jpg" 
-                alt="Van Executiva Nunes" 
+                src="/images/terminal-rodoviario-belem.jpg" 
+                alt="Terminal Rodoviário de Belém" 
                 className="rounded-lg shadow-xl max-w-full h-auto"
-                style={{ maxHeight: "350px", objectFit: "cover" }}
+                style={{ maxHeight: "280px", objectFit: "cover" }}
               />
             </div>
           </div>
@@ -58,11 +58,11 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* About Belém Section */}
+      {/* About Belém Section - More focused on local details */}
       <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-            Conheça Belém - A Cidade das Mangueiras
+            Explorando Belém do Pará
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -71,35 +71,35 @@ const HomePage: React.FC = () => {
                 src="/images/ver-o-peso-belem.jpg"
                 alt="Mercado Ver-o-Peso em Belém do Pará" 
                 className="rounded-lg shadow-lg w-full h-auto"
-                style={{ maxHeight: "300px", objectFit: "cover" }}
+                style={{ maxHeight: "260px", objectFit: "cover" }}
               />
             </div>
             <div className="space-y-4">
               <p className="text-gray-700">
-                Belém, capital do Pará, é conhecida como a "Cidade das Mangueiras" devido às árvores que embelezam suas avenidas. Com mais de 400 anos de história, a cidade possui um rico patrimônio cultural e gastronômico.
+                Belém, capital do estado do Pará, é conhecida como a "Porta de Entrada da Amazônia". Rica em história e cultura, a cidade encanta os visitantes com seus marcos históricos como o Ver-o-Peso, maior feira livre da América Latina, e a Estação das Docas.
               </p>
               <p className="text-gray-700">
-                Do famoso Ver-o-Peso, maior feira livre da América Latina, às delícias do açaí e tacacá, Belém encanta visitantes com sua culinária e cultura ribeirinha.
+                A gastronomia paraense é um destaque à parte, com sabores únicos como o açaí, o tacacá, o pato no tucupi e a maniçoba, considerados patrimônios culturais da região amazônica.
               </p>
               <p className="text-gray-700">
-                A Nunes Van facilita seu transporte pela região, conectando Belém e São Caetano com segurança e pontualidade.
+                A Nunes Van facilita suas viagens pela região, conectando o centro de Belém a São Caetano com rapidez, conforto e segurança.
               </p>
               <Button 
                 asChild
-                className="bg-blue-700 hover:bg-blue-800 text-white font-medium mt-4"
+                className="bg-blue-700 hover:bg-blue-800 text-white font-medium mt-2"
               >
-                <Link to="/about">Saiba mais sobre a região</Link>
+                <Link to="/about">Conheça mais sobre Belém</Link>
               </Button>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Itinerários Principais Section */}
+      {/* Itinerários Principais Section - Enhanced local information */}
       <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
-            Itinerários Principais
+            Principais Rotas da Nunes Van
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -109,6 +109,7 @@ const HomePage: React.FC = () => {
                 <Bus className="text-blue-800" />
                 <h3 className="text-xl font-semibold">Belém → São Caetano</h3>
               </div>
+              <p className="text-gray-600 mb-3">Saindo do Terminal Rodoviário de Belém com paradas na Av. Almirante Barroso e Ver-o-Peso.</p>
               <div className="space-y-2 mb-4">
                 <p className="font-medium text-gray-700">Horários de partida:</p>
                 <div className="flex flex-wrap gap-2">
@@ -136,6 +137,7 @@ const HomePage: React.FC = () => {
                 <Bus className="text-blue-800" />
                 <h3 className="text-xl font-semibold">São Caetano → Belém</h3>
               </div>
+              <p className="text-gray-600 mb-3">Retorno para Belém com chegada no Terminal Rodoviário e paradas estratégicas pela cidade.</p>
               <div className="space-y-2 mb-4">
                 <p className="font-medium text-gray-700">Horários de partida:</p>
                 <div className="flex flex-wrap gap-2">
@@ -158,72 +160,72 @@ const HomePage: React.FC = () => {
             </div>
           </div>
           
-          <div className="text-center mt-8 text-gray-500">
-            <p>Viagens disponíveis todos os dias da semana, incluindo feriados</p>
+          <div className="text-center mt-6 text-gray-500">
+            <p>Todas as viagens incluem ar-condicionado, Wi-Fi e poltronas confortáveis</p>
           </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 bg-white">
+      {/* Features Section - More specific about the company */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-8">
             Por que escolher a Nunes Van?
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <Clock className="text-blue-800 text-2xl" />
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <div className="flex flex-col items-center text-center p-5 rounded-lg hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Clock className="text-blue-800 text-xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Pontualidade</h3>
+              <h3 className="text-lg font-semibold mb-2">Pontualidade</h3>
               <p className="text-gray-600">
-                Viagens com horários flexíveis e sempre pontuais entre Belém e São Caetano para sua comodidade.
+                Saídas pontuais do Terminal Rodoviário de Belém e dos pontos em São Caetano, respeitando seu tempo.
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <Shield className="text-blue-800 text-2xl" />
+            <div className="flex flex-col items-center text-center p-5 rounded-lg hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Shield className="text-blue-800 text-xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Segurança</h3>
+              <h3 className="text-lg font-semibold mb-2">Segurança</h3>
               <p className="text-gray-600">
-                Vans modernas e motoristas profissionais para sua total tranquilidade nas viagens pela região.
+                Frota moderna e regularizada, com motoristas experientes nas rotas específicas de Belém e região.
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <Star className="text-blue-800 text-2xl" />
+            <div className="flex flex-col items-center text-center p-5 rounded-lg hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <Star className="text-blue-800 text-xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Conforto</h3>
+              <h3 className="text-lg font-semibold mb-2">Conforto</h3>
               <p className="text-gray-600">
-                Vans executivas com poltronas confortáveis e ar-condicionado para viagens agradáveis no clima de Belém.
+                Vans executivas climatizadas, ideais para o clima quente e úmido de Belém, com poltronas reclináveis.
               </p>
             </div>
 
-            <div className="flex flex-col items-center text-center p-6 rounded-lg hover:shadow-lg transition-shadow">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mb-4">
-                <MapPin className="text-blue-800 text-2xl" />
+            <div className="flex flex-col items-center text-center p-5 rounded-lg hover:shadow-lg transition-shadow">
+              <div className="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                <MapPin className="text-blue-800 text-xl" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Flexibilidade</h3>
+              <h3 className="text-lg font-semibold mb-2">Acessibilidade</h3>
               <p className="text-gray-600">
-                Paradas em pontos estratégicos em Belém e São Caetano para sua conveniência.
+                Pontos de embarque estratégicos em Belém, incluindo Ver-o-Peso, Estação das Docas e shoppings.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="py-16 bg-gray-50">
+      {/* Testimonials Section - More authentic local testimonials */}
+      <section className="py-12 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-            O que nossos clientes dizem
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+            O que nossos passageiros dizem
           </h2>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                   <Users className="text-blue-800" />
@@ -240,11 +242,11 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <p className="text-gray-600">
-                "Uso a Nunes Van toda semana para ir de Belém a São Caetano. O serviço é pontual e os motoristas são muito atenciosos. Recomendo!"
+                "Sempre uso a Nunes Van para ir do Ver-o-Peso até São Caetano. O serviço é pontual mesmo em dias de chuva forte em Belém, e os motoristas conhecem bem as rotas alternativas."
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                   <Users className="text-blue-800" />
@@ -261,11 +263,11 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <p className="text-gray-600">
-                "Viajo frequentemente entre São Caetano e Belém e a Nunes Van é sempre minha escolha. Veículos limpos e confortáveis, mesmo com o calor da região."
+                "Trabalho na feira do Ver-o-Peso e preciso chegar cedo. A van das 4h da manhã de São Caetano é perfeita para mim, sempre pontual e com preço justo."
               </p>
             </div>
             
-            <div className="bg-white p-6 rounded-lg shadow-md">
+            <div className="bg-white p-6 rounded-lg shadow-sm">
               <div className="flex items-center mb-4">
                 <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mr-4">
                   <Users className="text-blue-800" />
@@ -282,80 +284,77 @@ const HomePage: React.FC = () => {
                 </div>
               </div>
               <p className="text-gray-600">
-                "Ótimo custo-benefício para quem precisa se deslocar entre Belém e São Caetano. Reservar online é muito prático e sempre tem horários disponíveis."
+                "Faço compras na Estação das Docas e a Nunes Van tem ponto de embarque bem próximo, facilitando muito meu retorno para São Caetano com as sacolas."
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Popular Routes Section */}
-      <section className="py-16 bg-white">
+      {/* Popular Routes Section - More focused on actual destinations */}
+      <section className="py-12 bg-white">
         <div className="container mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-bold text-center mb-12">
-            Rotas Populares
+          <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">
+            Destinos em Belém
           </h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {/* Updated first popular route */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
                 src="/images/terminal-rodoviario-belem.jpg" 
                 alt="Terminal Rodoviário de Belém" 
-                className="w-full h-48 object-cover"
+                className="w-full h-40 object-cover"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Belém → São Caetano</h3>
-                <p className="text-gray-600 mb-4">Viagem executiva em van com WiFi e tomadas USB. Partindo do centro de Belém.</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-blue-800 font-bold">A partir de R$ 25,00</span>
-                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-medium">
-                    <Link to="/routes?origin=Belém&destination=São%20Caetano">Ver horários</Link>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold mb-2">Terminal Rodoviário</h3>
+                <p className="text-gray-600 mb-3">Ponto principal de embarque e desembarque em Belém, com saídas frequentes para São Caetano.</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-blue-800 font-bold">R$ 25,00</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white">
+                    <Link to="/routes?origin=Belém&destination=São%20Caetano">Horários</Link>
                   </Button>
                 </div>
               </div>
             </div>
 
-            {/* Updated second popular route */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
-                src="/images/sao-caetano-belem.jpg" 
-                alt="São Caetano para Belém" 
-                className="w-full h-48 object-cover"
+                src="/images/ver-o-peso-belem.jpg" 
+                alt="Ver-o-Peso em Belém" 
+                className="w-full h-40 object-cover"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">São Caetano → Belém</h3>
-                <p className="text-gray-600 mb-4">Van executiva com paradas estratégicas em São Caetano e Belém.</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-blue-800 font-bold">A partir de R$ 25,00</span>
-                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-medium">
-                    <Link to="/routes?origin=São%20Caetano&destination=Belém">Ver horários</Link>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold mb-2">Ver-o-Peso</h3>
+                <p className="text-gray-600 mb-3">Ponto de embarque próximo à maior feira livre da América Latina, com fácil acesso ao comércio local.</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-blue-800 font-bold">R$ 25,00</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white">
+                    <Link to="/routes?origin=Belém&destination=São%20Caetano">Horários</Link>
                   </Button>
                 </div>
               </div>
             </div>
 
-            {/* Special route for tourists */}
             <div className="bg-gray-50 rounded-lg overflow-hidden shadow hover:shadow-md transition-shadow">
               <img 
                 src="/images/estacao-das-docas-belem.jpg" 
                 alt="Estação das Docas em Belém" 
-                className="w-full h-48 object-cover"
+                className="w-full h-40 object-cover"
               />
-              <div className="p-6">
-                <h3 className="text-xl font-semibold mb-2">Pontos Turísticos - Belém</h3>
-                <p className="text-gray-600 mb-4">Conheça os principais pontos turísticos de Belém com nosso roteiro especial</p>
-                <div className="flex justify-between items-center">
-                  <span className="text-blue-800 font-bold">A partir de R$ 40,00</span>
-                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white font-medium">
-                    <Link to="/routes?tour=belem">Ver detalhes</Link>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold mb-2">Estação das Docas</h3>
+                <p className="text-gray-600 mb-3">Complexo turístico às margens da Baía do Guajará, com restaurantes e lojas. Ponto de embarque conveniente.</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-blue-800 font-bold">R$ 25,00</span>
+                  <Button asChild size="sm" className="bg-blue-700 hover:bg-blue-800 text-white">
+                    <Link to="/routes?origin=Belém&destination=São%20Caetano">Horários</Link>
                   </Button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="text-center mt-12">
+          <div className="text-center mt-8">
             <Button 
               asChild
               size="lg"
@@ -367,14 +366,14 @@ const HomePage: React.FC = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="py-16 bg-blue-800 text-white">
+      {/* CTA Section - More local specific */}
+      <section className="py-12 bg-blue-800 text-white">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6">
-            Transporte executivo em van com a Nunes Van
+          <h2 className="text-2xl md:text-3xl font-bold mb-5">
+            Viaje com conforto entre Belém e São Caetano
           </h2>
-          <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Cadastre-se para receber ofertas exclusivas nas rotas entre Belém e São Caetano e facilitar suas futuras reservas de viagens.
+          <p className="text-lg mb-6 max-w-2xl mx-auto">
+            Cadastre-se para receber alertas sobre novos horários, promoções especiais e informações sobre as rotas de Belém incluindo Ver-o-Peso e Estação das Docas.
           </p>
           <Button 
             asChild
