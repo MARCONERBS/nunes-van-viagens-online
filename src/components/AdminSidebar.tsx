@@ -119,6 +119,15 @@ const AdminSidebar = () => {
             </SidebarMenuButton>
           </SidebarMenuItem>
           
+          <SidebarMenuItem>
+            <SidebarMenuButton asChild isActive={isActive("/admin/usuarios")}>
+              <Link to="/admin/usuarios">
+                <User />
+                <span>Usuários</span>
+              </Link>
+            </SidebarMenuButton>
+          </SidebarMenuItem>
+          
           <SidebarSeparator />
           
           <SidebarMenuItem>

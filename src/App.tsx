@@ -22,6 +22,7 @@ import AdminPage from "./pages/AdminPage";
 import NotFound from "./pages/NotFound";
 import { useAuth } from "./context/AuthContext";
 import AboutPage from "./pages/AboutPage";
+import AdminUsersPage from "./pages/AdminUsersPage";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +86,7 @@ const AppRoutes = () => {
       
       {/* Admin Routes */}
       <Route path="/admin/*" element={<AdminLayout><AdminPage /></AdminLayout>} />
+      <Route path="/admin/usuarios" element={<AdminLayout><AdminUsersPage /></AdminLayout>} />
       
       {/* Customer Routes */}
       <Route path="/my-account/*" element={<CustomerLayout><MyAccountPage /></CustomerLayout>} />
