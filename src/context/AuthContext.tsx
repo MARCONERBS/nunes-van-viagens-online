@@ -35,19 +35,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
       });
       return false;
     }
-    // Buscar dados extras do usuário se necessário
+    // Garante que o campo role está presente no metadata
+    let role = data.user.user_metadata?.role;
+    if (!role && data.user.email === 'admin@nunesvan.com') {
+      // Atualiza o metadata do admin para garantir o role
+      await supabase.auth.updateUser({ data: { role: 'admin' } });
+      role = 'admin';
+    }
     setUser({
       id: data.user.id,
       name: data.user.user_metadata?.name || data.user.email,
       email: data.user.email!,
-      role: data.user.user_metadata?.role || 'customer',
+      role: role || 'customer',
     });
     setIsAuthenticated(true);
     localStorage.setItem("user", JSON.stringify({
       id: data.user.id,
       name: data.user.user_metadata?.name || data.user.email,
       email: data.user.email!,
-      role: data.user.user_metadata?.role || 'customer',
+      role: role || 'customer',
     }));
     toast({
       title: "Login realizado com sucesso",
